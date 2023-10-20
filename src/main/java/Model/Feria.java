@@ -5,7 +5,7 @@
 package Model;
 import java.util.*;
 import Excepciones.ClienteNoEncontrado;
-
+import xml.*;
 /**
  *
  * @author dalilacabeza
@@ -37,5 +37,16 @@ public class Feria {
                
         throw new ClienteNoEncontrado("Error: ID no encontrado");
     }
-  
+    
+    public void cargarPublicaciones() {
+		CargaXML cargador = new CargaXML();
+		cargador.cargarStandsXML(this);
+
+	}
+    public void agregaAccesorio(Accesorio accesorio){
+        
+    }
+    public void agregaStand(Stand stand){
+    
+    }
 }

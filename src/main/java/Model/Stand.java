@@ -10,6 +10,7 @@ public abstract class Stand{
     private float precioM2;
     private Cliente cliente;
     private ArrayList<Accesorio>listaAccesorios;
+    
 
     public Stand() {
     }
@@ -70,7 +71,6 @@ public abstract class Stand{
         return "Stand{" + "idStand=" + idStand + ", superficie=" + superficie + ", precioM2=" + precioM2 + ", unCliente=" + cliente + ", listaAccesorios=" + listaAccesorios + '}';
     }
     
-  
 }
     
 
