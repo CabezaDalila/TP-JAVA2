@@ -65,6 +65,11 @@ public class Cliente {
         final Cliente other = (Cliente) obj;
         return Objects.equals(this.idCliente, other.idCliente);
     }
+
+    @Override
+    public String toString() {
+        return "Cliente{" + "idCliente=" + idCliente + ", descCliente=" + descCliente + ", listaStands=" + listaStands + '}';
+    }
     
     
 }
