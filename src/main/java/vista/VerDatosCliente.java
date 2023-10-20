@@ -1,10 +1,10 @@
 
 package vista;
-
+import Model.*;
 
 public class VerDatosCliente extends javax.swing.JFrame {
 
-    public VerDatosCliente() {
+    public VerDatosCliente(Cliente cliente) {
         initComponents();
     }
 
