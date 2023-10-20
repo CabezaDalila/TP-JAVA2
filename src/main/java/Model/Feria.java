@@ -11,9 +11,23 @@ import Excepciones.ClienteNoEncontrado;
  * @author dalilacabeza
  */
 public class Feria {
+    private static Feria feria;
     private Set<Cliente> listaClientes;
-    private Set<Stand> listaStands;
+    private List<Stand> listaStands;
 
+    public Feria(Set<Cliente> listaClientes, Set<Stand> listaStands) {
+        this.listaClientes = new TreeSet<>(listaClientes);
+        this.listaStands = new ArrayList<>();
+    }
+
+   //Singleton
+   public static Feria getInstance(){
+       if(feria==null){
+            feria = new Feria(new HashSet<>(), new HashSet<>());
+       }
+       return feria;
+   }
+    
     public Cliente buscaClientePorId(String idCliente) throws ClienteNoEncontrado{
          for (Cliente cliente : listaClientes) {
             if (cliente.getIdCliente().equals(idCliente)) {

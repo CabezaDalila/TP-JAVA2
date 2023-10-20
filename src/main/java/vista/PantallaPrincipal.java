@@ -1,14 +1,17 @@
 
 package vista;
-
+import Model.*;
+import Excepciones.*;
 import javax.swing.JOptionPane;
 
 
 public class PantallaPrincipal extends javax.swing.JFrame {
-
+    
+    private static Feria feria;
 
     public PantallaPrincipal() {
         initComponents();
+        this.feria = Feria.getInstance();
     }
 
 
@@ -244,10 +247,14 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private void btnStandsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStandsActionPerformed
         String textoIngresado = JOptionPane.showInputDialog("Ingrese el ID del cliente del que quiere consultar sus Stands:");
         if (textoIngresado != null) {
-            VerDatosCliente datosCliente=new VerDatosCliente();
-            datosCliente.setVisible(true);
-            datosCliente.setLocationRelativeTo(null);
-        }
+            try{
+                Cliente cliente = feria.buscaClientePorId(textoIngresado);
+                VerDatosCliente datosCliente = new VerDatosCliente(cliente);
+                datosCliente.setVisible(true);
+                datosCliente.setLocationRelativeTo(null);
+        } catch(ClienteNoEncontrado e){
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }}
         
     }//GEN-LAST:event_btnStandsActionPerformed
 
