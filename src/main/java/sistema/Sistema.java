@@ -20,6 +20,8 @@ public class Sistema {
         List<Stand> listaStandsFeria = feria.getListaStands();
         for (Stand stand : listaStandsFeria) {
             System.out.println(stand.toString());
+            
+            
         }
     }
 }
