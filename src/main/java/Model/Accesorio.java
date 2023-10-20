@@ -1,5 +1,5 @@
 
-package logica;
+package Model;
 
 
 public class Accesorio {
@@ -45,5 +45,10 @@ public class Accesorio {
             System.out.println("ID Accesorio: "+miAccesorio.getIdAccesorio());
         }
     }*/
+
+    @Override
+    public String toString() {
+        return "Accesorio{" + "idAccesorio=" + idAccesorio + ", descAccesorio=" + descAccesorio + ", precioAlquiler=" + precioAlquiler + '}';
+    }
     
 }

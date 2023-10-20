@@ -1,6 +1,5 @@
 
-package logica;
-
+package Model;
 import java.util.ArrayList;
 
 
@@ -13,5 +12,8 @@ public class StandExterior extends Stand {
         super(idStand, superficie, precioM2, unCliente, listaAccesorios);
     }
 
-  
+    public float  valorTotalStand(){
+        //DESARROLLAR
+        return 0;
+    }
 }

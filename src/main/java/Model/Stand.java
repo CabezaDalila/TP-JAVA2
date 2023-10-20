@@ -1,23 +1,24 @@
-package logica;
+package Model;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 
-public class Stand {
+public abstract class Stand{
     private String idStand;
     private int superficie;
     private float precioM2;
-    private Cliente unCliente;
+    private Cliente cliente;
     private ArrayList<Accesorio>listaAccesorios;
 
     public Stand() {
     }
 
-    public Stand(String idStand, int superficie, float precioM2, Cliente unCliente, ArrayList<Accesorio> listaAccesorios) {
+    public Stand(String idStand, int superficie, float precioM2, Cliente cliente, ArrayList<Accesorio> listaAccesorios) {
         this.idStand = idStand;
         this.superficie = superficie;
         this.precioM2 = precioM2;
-        this.unCliente = unCliente;
+        this.cliente = cliente;
         this.listaAccesorios = listaAccesorios;
     }
 
@@ -46,11 +47,11 @@ public class Stand {
     }
 
     public Cliente getUnCliente() {
-        return unCliente;
+        return cliente;
     }
 
     public void setUnCliente(Cliente unCliente) {
-        this.unCliente = unCliente;
+        this.cliente = unCliente;
     }
 
     public ArrayList<Accesorio> getListaAccesorios() {
@@ -61,5 +62,15 @@ public class Stand {
         this.listaAccesorios = listaAccesorios;
     }
     
+    public abstract float  valorTotalStand();
     
+    //Cuando se llame al metodo toString de Stands va a llamar al toString de Accesorio automaticamente
+    @Override
+    public String toString() {
+        return "Stand{" + "idStand=" + idStand + ", superficie=" + superficie + ", precioM2=" + precioM2 + ", unCliente=" + cliente + ", listaAccesorios=" + listaAccesorios + '}';
+    }
+    
+  
 }
+    
+
