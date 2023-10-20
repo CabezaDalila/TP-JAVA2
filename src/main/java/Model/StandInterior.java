@@ -1,5 +1,5 @@
 
-package logica;
+package Model;
 
 import java.util.ArrayList;
 
@@ -23,6 +23,9 @@ public class StandInterior extends Stand{
     public void setCantLuminarias(int cantLuminarias) {
         this.cantLuminarias = cantLuminarias;
     }
-
+    public float  valorTotalStand(){
+    // DESARROLLAR
+    return 0;
+    }
 
 }
