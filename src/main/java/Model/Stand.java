@@ -70,10 +70,7 @@ public abstract class Stand{
     public String toString() {
         return "Stand{" + "idStand=" + idStand + ", superficie=" + superficie + ", precioM2=" + precioM2 + ", unCliente=" + cliente + ", listaAccesorios=" + listaAccesorios + '}';
     }
-    public void creaListaAccesorios(Accesorio accesorio){
-        listaAccesorios.add(accesorio);
-    }
-  
+    
 }
     
 
