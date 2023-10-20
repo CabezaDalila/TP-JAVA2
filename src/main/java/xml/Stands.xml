@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <stands>
+    <stand>
     <standInterior>
         <idStand>STD01</idStand>
         <superficie>40</superficie>
@@ -30,6 +31,8 @@
         </accesorio>
         <cantLuminarias>5</cantLuminarias>
         </standInterior>
+    </stand>
+    <stand>
         <standInterior>
             <idStand>STD02</idStand>
             <superficie>30</superficie>
@@ -50,6 +53,8 @@
             </accesorio>
             <cantLuminarias>3</cantLuminarias>
     </standInterior>
+    </stand>
+    <stand>
     <standExterior>
         <idStand>STD03</idStand>
         <superficie>20</superficie>
@@ -64,6 +69,8 @@
             <precioAlquiler>40</precioAlquiler>
         </accesorio>
     </standExterior>
+    </stand>
+    <stand>
     <standExterior>
         <idStand>STD04</idStand>
         <superficie>35</superficie>
@@ -83,6 +90,8 @@
             <precioAlquiler>15</precioAlquiler>
         </accesorio>
     </standExterior>
+    </stand>
+    <stand>
     <standInterior>
         <idStand>STD05</idStand>
         <superficie>38</superficie>
@@ -103,6 +112,8 @@
         </accesorio>
         <cantLuminarias>6</cantLuminarias>
     </standInterior>
+    </stand>
+    <stand>
     <standExterior>
         <idStand>STD06</idStand>
         <superficie>28</superficie>
@@ -127,6 +138,8 @@
             <precioAlquiler>15</precioAlquiler>
         </accesorio>
     </standExterior>
+    </stand>
+    <stand>
     <standInterior>
         <idStand>STD07</idStand>
         <superficie>23</superficie>
@@ -147,4 +160,5 @@
         </accesorio>
         <cantLuminarias>7</cantLuminarias>
     </standInterior>
+    </stand>
  </stands>
