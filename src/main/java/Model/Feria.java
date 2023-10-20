@@ -37,16 +37,21 @@ public class Feria {
                
         throw new ClienteNoEncontrado("Error: ID no encontrado");
     }
-    
-    public void cargarPublicaciones() {
+    public void agregaCliente(Cliente cliente){
+        listaClientes.add(cliente);
+    }
+    public void cargarStands() {
 		CargaXML cargador = new CargaXML();
 		cargador.cargarStandsXML(this);
 
 	}
-    public void agregaAccesorio(Accesorio accesorio){
-        
+
+    public List<Stand> getListaStands() {
+        return listaStands;
     }
-    public void agregaStand(Stand stand){
     
+   
+    public void agregaStand(Stand stand){
+        listaStands.add(stand);
     }
 }

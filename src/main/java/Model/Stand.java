@@ -63,6 +63,9 @@ public abstract class Stand{
         this.listaAccesorios = listaAccesorios;
     }
     
+    public void agregaAccesorio(Accesorio accesorio){
+        listaAccesorios.add(accesorio);
+    }
     public abstract float  valorTotalStand();
     
     //Cuando se llame al metodo toString de Stands va a llamar al toString de Accesorio automaticamente

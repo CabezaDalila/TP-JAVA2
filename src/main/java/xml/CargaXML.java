@@ -16,7 +16,7 @@ import Model.*;
 public class CargaXML {
     public void cargarStandsXML(Feria feria){
         try{
-            File archivoXML = new File("src/xml/Stands.xml");
+            File archivoXML = new File("src/main/java/xml/Stands.xml");
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(archivoXML);
@@ -32,9 +32,9 @@ public class CargaXML {
                     Element elementoStandInterior = (Element) elementoStand.getElementsByTagName("StandInterior").item(0);
                     Element elementoStandExterior = (Element) elementoStand.getElementsByTagName("StandExterior").item(0);
                     String idStand = elementoStand.getElementsByTagName("idStand").item(0).getTextContent();
-                    int superficie = Integer.parseInt(elementoStand.getElementsByTagName("superficieStand").item(0).getTextContent());
-                    float precioM2 = Float.parseFloat(elementoStand.getElementsByTagName("preciom2Stand").item(0).getTextContent());
-                    String idClienteStand = elementoStand.getElementsByTagName("idClienteStand").item(0).getTextContent();
+                    int superficie = Integer.parseInt(elementoStand.getElementsByTagName("superficie").item(0).getTextContent());
+                    float precioM2 = Float.parseFloat(elementoStand.getElementsByTagName("precioM2").item(0).getTextContent());
+                    String idClienteStand = elementoStand.getElementsByTagName("idCliente").item(0).getTextContent();
                     String descCliente = elementoStand.getElementsByTagName("descCliente").item(0).getTextContent();
                     
                     ArrayList<Accesorio> listaAccesorios = new ArrayList<>();
@@ -53,6 +53,7 @@ public class CargaXML {
                         }
                     }
                     Cliente cliente = new Cliente(idClienteStand,descCliente);
+                    
                     if(elementoStandInterior != null){
                         int cantLuminarias = Integer.parseInt(elementoStandInterior.getElementsByTagName("cantLuminarias").item(0).getTextContent());
                         StandInterior standInterior = new StandInterior(cantLuminarias,idStand, superficie, precioM2, cliente,listaAccesorios);
