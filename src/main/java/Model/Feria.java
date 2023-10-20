@@ -13,11 +13,11 @@ import Excepciones.ClienteNoEncontrado;
 public class Feria {
     private static Feria feria;
     private Set<Cliente> listaClientes;
-    private Map<Cliente, List<Stand>> mapClienteStands;
+    private List<Stand> listaStands;
 
     public Feria(Set<Cliente> listaClientes, Set<Stand> listaStands) {
         this.listaClientes = new TreeSet<>(listaClientes);
-        this.mapClienteStands = new HashMap<>();
+        this.listaStands = new ArrayList<>();
     }
 
    //Singleton
