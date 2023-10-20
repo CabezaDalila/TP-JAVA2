@@ -37,5 +37,11 @@ public class Feria {
                
         throw new ClienteNoEncontrado("Error: ID no encontrado");
     }
-  
+    
+    public void agregaAccesorio(Accesorio accesorio){
+        
+    }
+    public void agregaStand(Stand stand){
+    
+    }
 }

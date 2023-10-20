@@ -49,14 +49,14 @@ public class CargaXML {
                             double precioAlquiler = Double.parseDouble(elementoAccesorio.getElementsByTagName("precioAlquiler").item(0).getTextContent());
 
                             Accesorio accesorio = new Accesorio(idAccesorio, descAccesorio, precioAlquiler);
-                            listaAccesorios.add(accesorio);
+                            feria.agregarAccesorios(accesorio);
                         }
                     }
                     Cliente cliente = new Cliente(idClienteStand,descCliente);
                     if(elementoStandInterior != null){
                         int cantLuminarias = Integer.parseInt(elementoStandInterior.getElementsByTagName("cantLuminarias").item(0).getTextContent());
                         StandInterior standInterior = new StandInterior(idStand, superficie, precioM2, cliente, listaAccesorios);
-                        feria.agregarStand(standInterior);
+                        feria.agregaStand(standInterior);
                     } else {
                         StandExterior standExterior = new StandExterior(idStand, superficie, precioM2, cliente, listaAccesorios);
                         feria.agregarStand(standExterior);
