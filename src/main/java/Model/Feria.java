@@ -41,17 +41,39 @@ public class Feria {
         listaClientes.add(cliente);
     }
     public void cargarStands() {
-		CargaXML cargador = new CargaXML();
-		cargador.cargarStandsXML(this);
-
-	}
-
+	CargaXML cargador = new CargaXML();
+	cargador.cargarStandsXML(this);
+    }
+    
     public List<Stand> getListaStands() {
         return listaStands;
     }
+
+    public Set<Cliente> getListaClientes() {
+        return listaClientes;
+    }
+    
     
    
     public void agregaStand(Stand stand){
         listaStands.add(stand);
     }
+    
+    
+    
+    public void agregaStandAcliente(){
+        ArrayList<Stand> nuevaLista=new ArrayList();
+        for(Cliente cliente:listaClientes){
+            for(Stand stand:listaStands){
+                if(stand.getUnCliente().getIdCliente().equals(cliente.getIdCliente())){
+                    nuevaLista.add(stand);
+                }
+            }
+            System.out.println("tamanio de la lista nueva:  "+nuevaLista.size()); 
+            cliente.setListaStands(nuevaLista);
+        }
+    }
+    
+
+    
 }

@@ -6,7 +6,7 @@ import java.util.Objects;
 
 
 
-public class Cliente {
+public class Cliente implements Comparable<Cliente>{
     private String idCliente;
     private String descCliente;
     private ArrayList<Stand> listaStands;
@@ -19,6 +19,13 @@ public class Cliente {
         this.descCliente = descCliente;
     }
 
+    public Cliente(String idCliente, String descCliente, ArrayList<Stand> listaStands) {
+        this.idCliente = idCliente;
+        this.descCliente = descCliente;
+        this.listaStands = listaStands;
+    }
+
+    
     public String getIdCliente() {
         return idCliente;
     }
@@ -68,6 +75,11 @@ public class Cliente {
     @Override
     public String toString() {
         return "Cliente{" + "idCliente=" + idCliente + ", descCliente=" + descCliente + ", listaStands=" + listaStands + '}';
+    }
+
+    @Override
+    public int compareTo(Cliente o) {
+        return this.idCliente.compareTo(o.idCliente);
     }
     
     
