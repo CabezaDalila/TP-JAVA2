@@ -12,7 +12,6 @@ public class VerDatosCliente extends javax.swing.JFrame {
 
     public VerDatosCliente(Cliente cliente) {
         this.cliente=cliente;
-        System.out.println("Datos del clienteee "+cliente.toString());
         initComponents();
     }
 
@@ -324,7 +323,7 @@ public class VerDatosCliente extends javax.swing.JFrame {
         //setear los datos en la tabla
         if(listaStands!=null){
             for(Stand stand:listaStands){
-                Object objeto[]={stand.getIdStand(),stand.getSuperficie(),stand.getPrecio(),stand.getUnCliente(),stand.getListaAccesorios()};
+                Object objeto[]={stand.getIdStand(),stand.getSuperficie(),stand.getPrecio(),stand.getUnCliente().getIdCliente(),stand.getListaAccesorios()};
                 modeloTabla.addRow(objeto);
             }
         }
