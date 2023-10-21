@@ -22,7 +22,7 @@ public class CargaXML {
             Document doc = dBuilder.parse(archivoXML);
             doc.getDocumentElement().normalize();
 
-            NodeList listaStands = doc.getElementsByTagName("stands");
+            NodeList listaStands = doc.getElementsByTagName("stand");
 
             for (int i = 0; i < listaStands.getLength(); i++) {
                 Node nodoStand = listaStands.item(i);
