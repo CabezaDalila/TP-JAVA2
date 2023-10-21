@@ -82,15 +82,7 @@ public class Cliente implements Comparable<Cliente>{
     public String toString() {
         return "Cliente{" + "idCliente=" + idCliente + ", descCliente=" + descCliente + ", listaStands=" + listaStands + '}';
     }
-
-
-
-    @Override
-    public int compareTo(Cliente o) {
-        return this.idCliente.compareTo(o.idCliente);
-    }
     
-
     void agregaStand(ArrayList<Stand> nuevaLista) {
       if (listaStands == null) {
         listaStands = new ArrayList<>();

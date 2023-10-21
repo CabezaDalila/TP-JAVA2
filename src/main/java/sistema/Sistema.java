@@ -39,16 +39,14 @@ public class Sistema {
             System.out.println(cliente.toString());
         }*/
 
-            System.out.println(stand.toString()); 
-        }
         
-        for (Cliente cliente : listaClientesFeria) {
+       /* for (Cliente cliente : listaClientesFeria) {
             System.out.println(cliente.toString()); 
         }
         //fin prueba
         
         
-         feria.agregaStandAcliente();
+         feria.agregaStandAcliente();*/
          
     
     }
