@@ -50,12 +50,6 @@ public class Feria {
     public Set<Cliente> getListaClientes(){
         return listaClientes;
     }
-
-    public void cargarStands() {
-	CargaXML cargador = new CargaXML();
-	cargador.cargarStandsXML(this);
-    }
-
    
     public void agregaStand(Stand stand){
         listaStands.add(stand);
@@ -82,6 +76,19 @@ public class Feria {
         }*/
     }
     
+    public List<Stand> ordenaStandDescendentePorValor() {
+        listaStands.sort((stand1, stand2) -> Float.compare(stand2.valorTotalStand(), stand1.valorTotalStand()));
+        return listaStands;
+    }
+    public float valorPromedioStands(){
+        float suma=0;
+        int cont=0;
+        for(Stand stand : listaStands){
+            suma+=stand.valorTotalStand();
+            cont++;
+        }
+        return cont>0? suma/cont :0;
+    }
 
     
 }

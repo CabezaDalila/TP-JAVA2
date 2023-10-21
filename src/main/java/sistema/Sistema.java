@@ -6,15 +6,9 @@ import java.util.*;
 
 
 public class Sistema {
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
+
     private static Feria feria;
-=======
-    public static Feria feria;
->>>>>>> Stashed changes
-=======
-    public static Feria feria;
->>>>>>> Stashed changes
+
 
     public static void main(String[] args) {
         PantallaPrincipal principal = new PantallaPrincipal();
@@ -23,9 +17,7 @@ public class Sistema {
 
         feria=Feria.getInstance();
         
-<<<<<<< Updated upstream
-        
-<<<<<<< Updated upstream
+
         
         /*feria.cargarStands();
 
@@ -38,19 +30,14 @@ public class Sistema {
         
         
         //prueba para mostrar los stands y clientes por consola
-=======
+
         feria=Feria.getInstance();
         
         feria.cargarStands();
->>>>>>> Stashed changes
-=======
+
         feria=Feria.getInstance();
-        
-        feria.cargarStands();
->>>>>>> Stashed changes
+
         List<Stand> listaStandsFeria = feria.getListaStands();
-        Set<Cliente> listaClientesFeria=feria.getListaClientes();
-        
        
         for (Stand stand : listaStandsFeria) {
             System.out.println(stand.toString());
@@ -59,8 +46,7 @@ public class Sistema {
         Set<Cliente> listaClientesFeria= feria.getListaClientes();
         for(Cliente cliente : listaClientesFeria){
             System.out.println(cliente.toString());
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
+
         }*/
 
         
@@ -71,12 +57,7 @@ public class Sistema {
         
          */
     
-=======
-        }
->>>>>>> Stashed changes
-=======
-        }
->>>>>>> Stashed changes
+
     }
     
 }
