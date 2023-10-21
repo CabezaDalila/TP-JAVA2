@@ -6,7 +6,8 @@ import java.util.ArrayList;
 
 public class StandInterior extends Stand{
     private int cantLuminarias;
-
+    
+    
     public StandInterior() {
     }
 
@@ -24,8 +25,9 @@ public class StandInterior extends Stand{
         this.cantLuminarias = cantLuminarias;
     }
     public float  valorTotalStand(){
-    // DESARROLLAR
-    return 0;
+        float total=sumaPrecioAccesorios() + getPrecio()*getSuperficie() + 1000*cantLuminarias;
+        return total;
+        
     }
 
 }

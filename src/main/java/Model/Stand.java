@@ -73,6 +73,17 @@ public abstract class Stand{
     public String toString() {
         return "Stand{" + "idStand=" + idStand + ", superficie=" + superficie + ", precioM2=" + precioM2 + ", unCliente=" + cliente + ", listaAccesorios=" + listaAccesorios + '}';
     }
+    public float sumaPrecioAccesorios(){
+        float total=0;
+        for(Accesorio ac : listaAccesorios){
+            total+=ac.getPrecioAlquiler();
+        }
+        return total;
+    }
+    
+    public int tamanioLista(){
+        return listaAccesorios.size();
+    }
     
 }
     
