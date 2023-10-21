@@ -19,6 +19,7 @@ public class Sistema {
         
         feria.cargarStands();
         
+       
         
         
         //prueba para mostrar los stands y clientes por consola
@@ -34,6 +35,9 @@ public class Sistema {
             System.out.println(cliente.toString()); 
         }
         //fin prueba
+        
+        
+         feria.agregaStandAcliente();
     }
 }
 

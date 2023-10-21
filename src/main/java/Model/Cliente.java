@@ -82,5 +82,15 @@ public class Cliente implements Comparable<Cliente>{
         return this.idCliente.compareTo(o.idCliente);
     }
     
+   /* public void agregaStand(ArrayList<Stand> listaStands){
+        listaStands.add(listaStands);
+    }*/
+
+    void agregaStand(ArrayList<Stand> nuevaLista) {
+      
+       listaStands.addAll(nuevaLista);
+    }
     
+    
+  
 }

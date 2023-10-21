@@ -65,13 +65,21 @@ public class Feria {
         ArrayList<Stand> nuevaLista=new ArrayList();
         for(Cliente cliente:listaClientes){
             for(Stand stand:listaStands){
-                if(stand.getUnCliente().getIdCliente().equals(cliente.getIdCliente())){
+                if(stand.getUnCliente().getIdCliente().compareTo(cliente.getIdCliente())==0){
                     nuevaLista.add(stand);
                 }
             }
             System.out.println("tamanio de la lista nueva:  "+nuevaLista.size()); 
-            cliente.setListaStands(nuevaLista);
+            cliente.agregaStand(nuevaLista);
+            nuevaLista.clear();
         }
+        
+        
+        /*System.out.println("Termino la funcion agregaStand a cliente"); 
+        System.out.println("Cant stands en cte:"); 
+        for(Cliente cliente:listaClientes){
+            System.out.println("tamanio de la lista stands: "+cliente.getListaStands().size()); 
+        }*/
     }
     
 
