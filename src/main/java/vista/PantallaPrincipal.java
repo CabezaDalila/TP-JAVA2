@@ -3,7 +3,7 @@ package vista;
 import Model.*;
 import Excepciones.*;
 import javax.swing.JOptionPane;
-
+import xml.*;
 
 public class PantallaPrincipal extends javax.swing.JFrame {
     
@@ -252,14 +252,21 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                 VerDatosCliente datosCliente = new VerDatosCliente(cliente);
                 datosCliente.setVisible(true);
                 datosCliente.setLocationRelativeTo(null);
-        } catch(ClienteNoEncontrado e){
-            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        }}
+            } catch(ClienteNoEncontrado e){
+                JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
         
     }//GEN-LAST:event_btnStandsActionPerformed
 
     private void btnCargarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarDatosActionPerformed
-        // TODO add your handling code here:
+        CargaXML cargador = new CargaXML();
+         boolean cargaExitosa = cargador.cargarStandsXML(feria);
+        if (cargaExitosa) {
+            JOptionPane.showMessageDialog(this, "La carga fue exitosa", "Carga Exitosa", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Hubo un error en la carga", "Error en la Carga", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnCargarDatosActionPerformed
 
     private void btnPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrincipalActionPerformed
