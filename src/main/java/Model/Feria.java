@@ -27,7 +27,11 @@ public class Feria {
        }
        return feria;
    }
-    
+    public void cargarStands() {	
+        CargaXML cargador = new CargaXML();	
+        cargador.cargarStandsXML(this);	
+
+    }
     public Cliente buscaClientePorId(String idCliente) throws ClienteNoEncontrado{
          for (Cliente cliente : listaClientes) {
             if (cliente.getIdCliente().equals(idCliente)) {
