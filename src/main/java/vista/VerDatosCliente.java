@@ -324,6 +324,8 @@ public class VerDatosCliente extends javax.swing.JFrame {
         if(listaStands!=null){
             for(Stand stand:listaStands){
                 Object objeto[]={stand.getIdStand(),stand.getSuperficie(),stand.getPrecio(),stand.getUnCliente().getIdCliente(),stand.getListaAccesorios()};
+
+
                 modeloTabla.addRow(objeto);
             }
         }
