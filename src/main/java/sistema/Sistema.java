@@ -6,14 +6,16 @@ import java.util.*;
 
 
 public class Sistema {
-    
+    private static Feria feria;
 
     public static void main(String[] args) {
         PantallaPrincipal principal = new PantallaPrincipal();
         principal.setVisible(true);
         principal.setLocationRelativeTo(null);
+
+        feria=Feria.getInstance();
         
-        //feria=Feria.getInstance();
+        
         
         /*feria.cargarStands();
 
@@ -45,9 +47,7 @@ public class Sistema {
         }
         //fin prueba
         
-        
-         feria.agregaStandAcliente();*/
-         
+         */
     
     }
     

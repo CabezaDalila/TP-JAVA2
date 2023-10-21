@@ -264,6 +264,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         boolean cargaExitosa = cargador.cargarStandsXML(feria);
         if (cargaExitosa) {
             JOptionPane.showMessageDialog(this, "La carga fue exitosa", "Carga Exitosa", JOptionPane.INFORMATION_MESSAGE);
+            feria.agregaStandAcliente();
         } else {
             JOptionPane.showMessageDialog(this, "Hubo un error en la carga", "Error en la Carga", JOptionPane.ERROR_MESSAGE);
         }
