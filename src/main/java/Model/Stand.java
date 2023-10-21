@@ -85,6 +85,8 @@ public abstract class Stand{
         return listaAccesorios.size();
     }
     
+    
+   
 }
     
 
