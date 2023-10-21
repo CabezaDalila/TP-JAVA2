@@ -14,6 +14,10 @@ import org.w3c.dom.NodeList;
 import Model.*;
 
 public class CargaXML {
+
+    public CargaXML() {
+    }
+    
     public boolean cargarStandsXML(Feria feria){
         try{
             File archivoXML = new File("src/main/java/xml/Stands.xml");

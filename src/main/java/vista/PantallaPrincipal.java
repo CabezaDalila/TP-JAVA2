@@ -261,7 +261,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
     private void btnCargarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarDatosActionPerformed
         CargaXML cargador = new CargaXML();
-         boolean cargaExitosa = cargador.cargarStandsXML(feria);
+        boolean cargaExitosa = cargador.cargarStandsXML(feria);
         if (cargaExitosa) {
             JOptionPane.showMessageDialog(this, "La carga fue exitosa", "Carga Exitosa", JOptionPane.INFORMATION_MESSAGE);
         } else {

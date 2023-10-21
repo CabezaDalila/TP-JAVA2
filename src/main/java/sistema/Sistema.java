@@ -2,25 +2,17 @@
 package sistema;
 import Model.*;
 import vista.PantallaPrincipal;
-<<<<<<< Updated upstream
-
-=======
 import java.util.*;
->>>>>>> Stashed changes
 
 public class Sistema {
     
-<<<<<<< Updated upstream
-=======
 
->>>>>>> Stashed changes
     public static void main(String[] args) {
         PantallaPrincipal principal = new PantallaPrincipal();
         principal.setVisible(true);
         principal.setLocationRelativeTo(null);
-<<<<<<< Updated upstream
-=======
-        feria=Feria.getInstance();
+        
+        //feria=Feria.getInstance();
         
         /*feria.cargarStands();
         List<Stand> listaStandsFeria = feria.getListaStands();
@@ -32,7 +24,6 @@ public class Sistema {
         for(Cliente cliente : listaClientesFeria){
             System.out.println(cliente.toString());
         }*/
->>>>>>> Stashed changes
     }
     
 }

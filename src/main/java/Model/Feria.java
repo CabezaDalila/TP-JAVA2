@@ -36,9 +36,6 @@ public class Feria {
         }
         throw new ClienteNoEncontrado("Error: ID no encontrado");
     }
-<<<<<<< Updated upstream
-  
-=======
     public void agregaCliente(Cliente cliente){
         listaClientes.add(cliente);
     }
@@ -53,5 +50,4 @@ public class Feria {
     public void agregaStand(Stand stand){
         listaStands.add(stand);
     }
->>>>>>> Stashed changes
 }
