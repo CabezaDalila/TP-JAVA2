@@ -5,7 +5,7 @@
 package Model;
 import java.util.*;
 import Excepciones.ClienteNoEncontrado;
-
+import xml.*;
 /**
  *
  * @author dalilacabeza

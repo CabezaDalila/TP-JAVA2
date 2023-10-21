@@ -10,6 +10,7 @@ public abstract class Stand{
     private float precioM2;
     private Cliente cliente;
     private ArrayList<Accesorio>listaAccesorios;
+    
 
     public Stand() {
     }
@@ -62,6 +63,9 @@ public abstract class Stand{
         this.listaAccesorios = listaAccesorios;
     }
     
+    public void agregaAccesorio(Accesorio accesorio){
+        listaAccesorios.add(accesorio);
+    }
     public abstract float  valorTotalStand();
     
     //Cuando se llame al metodo toString de Stands va a llamar al toString de Accesorio automaticamente
@@ -70,7 +74,6 @@ public abstract class Stand{
         return "Stand{" + "idStand=" + idStand + ", superficie=" + superficie + ", precioM2=" + precioM2 + ", unCliente=" + cliente + ", listaAccesorios=" + listaAccesorios + '}';
     }
     
-  
 }
     
 

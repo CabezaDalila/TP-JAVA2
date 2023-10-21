@@ -14,10 +14,9 @@ public class Cliente implements Comparable<Cliente> {
     public Cliente() {
     }
 
-    public Cliente(String idCliente, String descCliente, ArrayList<Stand> listaStands) {
+    public Cliente(String idCliente, String descCliente) {
         this.idCliente = idCliente;
         this.descCliente = descCliente;
-        this.listaStands = listaStands;
     }
     public int compareTo(Cliente otroCliente){
         return this.idCliente.compareTo(otroCliente.idCliente);

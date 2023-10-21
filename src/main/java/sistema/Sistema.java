@@ -1,6 +1,6 @@
 
 package sistema;
-
+import Model.*;
 import vista.PantallaPrincipal;
 <<<<<<< Updated upstream
 
@@ -15,7 +15,7 @@ public class Sistema {
 
 >>>>>>> Stashed changes
     public static void main(String[] args) {
-        PantallaPrincipal principal=new PantallaPrincipal();
+        PantallaPrincipal principal = new PantallaPrincipal();
         principal.setVisible(true);
         principal.setLocationRelativeTo(null);
 <<<<<<< Updated upstream
@@ -36,3 +36,6 @@ public class Sistema {
     }
     
 }
+
+
+
