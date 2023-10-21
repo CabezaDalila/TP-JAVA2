@@ -6,6 +6,8 @@ import java.util.Objects;
 
 
 
+
+
 public class Cliente implements Comparable<Cliente>{
     private String idCliente;
     private String descCliente;
@@ -18,6 +20,10 @@ public class Cliente implements Comparable<Cliente>{
         this.idCliente = idCliente;
         this.descCliente = descCliente;
     }
+
+    public int compareTo(Cliente otroCliente){
+        return this.idCliente.compareTo(otroCliente.idCliente);
+}
 
     public Cliente(String idCliente, String descCliente, ArrayList<Stand> listaStands) {
         this.idCliente = idCliente;

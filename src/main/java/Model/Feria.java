@@ -34,32 +34,28 @@ public class Feria {
                 return cliente; 
             }
         }
-               
         throw new ClienteNoEncontrado("Error: ID no encontrado");
     }
     public void agregaCliente(Cliente cliente){
         listaClientes.add(cliente);
     }
+
+    public List<Stand> getListaStands() {
+        return listaStands;
+    }
+    public Set<Cliente> getListaClientes(){
+        return listaClientes;
+    }
+
     public void cargarStands() {
 	CargaXML cargador = new CargaXML();
 	cargador.cargarStandsXML(this);
     }
-    
-    public List<Stand> getListaStands() {
-        return listaStands;
-    }
 
-    public Set<Cliente> getListaClientes() {
-        return listaClientes;
-    }
-    
-    
    
     public void agregaStand(Stand stand){
         listaStands.add(stand);
     }
-    
-    
     
     public void agregaStandAcliente(){
         ArrayList<Stand> nuevaLista=new ArrayList();

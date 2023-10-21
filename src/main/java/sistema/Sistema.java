@@ -2,19 +2,21 @@
 package sistema;
 import Model.*;
 import vista.PantallaPrincipal;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+
 
 public class Sistema {
-
-    private static Feria feria;
     
-    private List<Stand> listaStands;
 
     public static void main(String[] args) {
         PantallaPrincipal principal = new PantallaPrincipal();
         principal.setVisible(true);
         principal.setLocationRelativeTo(null);
+        
+        //feria=Feria.getInstance();
+        
+        /*feria.cargarStands();
+
         //Cliente cliente=new Cliente();
         feria=Feria.getInstance();
         
@@ -29,6 +31,14 @@ public class Sistema {
         
        
         for (Stand stand : listaStandsFeria) {
+            System.out.println(stand.toString());
+            
+        }
+        Set<Cliente> listaClientesFeria= feria.getListaClientes();
+        for(Cliente cliente : listaClientesFeria){
+            System.out.println(cliente.toString());
+        }*/
+
             System.out.println(stand.toString()); 
         }
         
@@ -42,6 +52,7 @@ public class Sistema {
          
     
     }
+    
 }
 
 

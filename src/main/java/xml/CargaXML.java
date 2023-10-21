@@ -14,7 +14,11 @@ import org.w3c.dom.NodeList;
 import Model.*;
 
 public class CargaXML {
-    public void cargarStandsXML(Feria feria){
+
+    public CargaXML() {
+    }
+    
+    public boolean cargarStandsXML(Feria feria){
         try{
             File archivoXML = new File("src/main/java/xml/Stands.xml");
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -54,6 +58,7 @@ public class CargaXML {
                     }
                     Cliente cliente = new Cliente(idClienteStand,descCliente);
                     feria.agregaCliente(cliente);
+                  
                     if(elementoStandInterior != null){
                         int cantLuminarias = Integer.parseInt(elementoStandInterior.getElementsByTagName("cantLuminarias").item(0).getTextContent());
                         StandInterior standInterior = new StandInterior(cantLuminarias,idStand, superficie, precioM2, cliente,listaAccesorios);
@@ -64,9 +69,10 @@ public class CargaXML {
                     }
                 }
             }
-
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
+            return false;
         }
     }
     
