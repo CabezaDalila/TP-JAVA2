@@ -6,7 +6,9 @@ import java.util.Objects;
 
 
 
-public class Cliente implements Comparable<Cliente> {
+
+
+public class Cliente implements Comparable<Cliente>{
     private String idCliente;
     private String descCliente;
     private ArrayList<Stand> listaStands;
@@ -18,9 +20,18 @@ public class Cliente implements Comparable<Cliente> {
         this.idCliente = idCliente;
         this.descCliente = descCliente;
     }
+
     public int compareTo(Cliente otroCliente){
         return this.idCliente.compareTo(otroCliente.idCliente);
+}
+
+    public Cliente(String idCliente, String descCliente, ArrayList<Stand> listaStands) {
+        this.idCliente = idCliente;
+        this.descCliente = descCliente;
+        this.listaStands = listaStands;
     }
+
+    
     public String getIdCliente() {
         return idCliente;
     }
@@ -71,6 +82,24 @@ public class Cliente implements Comparable<Cliente> {
     public String toString() {
         return "Cliente{" + "idCliente=" + idCliente + ", descCliente=" + descCliente + ", listaStands=" + listaStands + '}';
     }
+
+
+
+    @Override
+    public int compareTo(Cliente o) {
+        return this.idCliente.compareTo(o.idCliente);
+    }
+    
+
+    void agregaStand(ArrayList<Stand> nuevaLista) {
+      if (listaStands == null) {
+        listaStands = new ArrayList<>();
+      }
+       listaStands.addAll(nuevaLista);
+        System.out.println("tamanio lista de stands de la clase cliente: "+listaStands.size()); 
+         
+    }
     
     
+  
 }

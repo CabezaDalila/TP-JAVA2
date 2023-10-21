@@ -58,7 +58,7 @@ public class CargaXML {
                     }
                     Cliente cliente = new Cliente(idClienteStand,descCliente);
                     feria.agregaCliente(cliente);
-                    
+                  
                     if(elementoStandInterior != null){
                         int cantLuminarias = Integer.parseInt(elementoStandInterior.getElementsByTagName("cantLuminarias").item(0).getTextContent());
                         StandInterior standInterior = new StandInterior(cantLuminarias,idStand, superficie, precioM2, cliente,listaAccesorios);
@@ -75,4 +75,5 @@ public class CargaXML {
             return false;
         }
     }
+    
 }
