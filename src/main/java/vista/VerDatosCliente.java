@@ -324,7 +324,7 @@ public class VerDatosCliente extends javax.swing.JFrame {
         //setear los datos en la tabla
         if(listaStands!=null){
             for(Stand stand:listaStands){
-                Object objeto[]={stand.getIdStand(),stand.getSuperficie(),stand.getPrecio(),stand.getUnCliente(),stand.getListaAccesorios()};
+                Object objeto[]={stand.getIdStand(),stand.getSuperficie(),stand.getPrecio(),stand.getUnCliente().getDescCliente(),stand.getListaAccesorios()};
                 modeloTabla.addRow(objeto);
             }
         }
