@@ -41,17 +41,47 @@ public class Feria {
         listaClientes.add(cliente);
     }
     public void cargarStands() {
-		CargaXML cargador = new CargaXML();
-		cargador.cargarStandsXML(this);
-
-	}
-
+	CargaXML cargador = new CargaXML();
+	cargador.cargarStandsXML(this);
+    }
+    
     public List<Stand> getListaStands() {
         return listaStands;
     }
+
+    public Set<Cliente> getListaClientes() {
+        return listaClientes;
+    }
+    
     
    
     public void agregaStand(Stand stand){
         listaStands.add(stand);
     }
+    
+    
+    
+    public void agregaStandAcliente(){
+        ArrayList<Stand> nuevaLista=new ArrayList();
+        for(Cliente cliente:listaClientes){
+            for(Stand stand:listaStands){
+                if(stand.getUnCliente().getIdCliente().compareTo(cliente.getIdCliente())==0){
+                    nuevaLista.add(stand);
+                }
+            }
+            System.out.println("tamanio de la lista nueva:  "+nuevaLista.size()); 
+            cliente.agregaStand(nuevaLista);
+            nuevaLista.clear();
+        }
+        
+        
+        System.out.println("Termino la funcion agregaStand a cliente"); 
+        System.out.println("Cant stands en cte:"); 
+        /*for(Cliente cliente:listaClientes){
+            System.out.println("DATOS "+cliente.toString()); 
+        }*/
+    }
+    
+
+    
 }
