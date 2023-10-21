@@ -77,18 +77,21 @@ public class Cliente implements Comparable<Cliente>{
         return "Cliente{" + "idCliente=" + idCliente + ", descCliente=" + descCliente + ", listaStands=" + listaStands + '}';
     }
 
+
+
     @Override
     public int compareTo(Cliente o) {
         return this.idCliente.compareTo(o.idCliente);
     }
     
-   /* public void agregaStand(ArrayList<Stand> listaStands){
-        listaStands.add(listaStands);
-    }*/
 
     void agregaStand(ArrayList<Stand> nuevaLista) {
-      
+      if (listaStands == null) {
+        listaStands = new ArrayList<>();
+      }
        listaStands.addAll(nuevaLista);
+        System.out.println("tamanio lista de stands de la clase cliente: "+listaStands.size()); 
+         
     }
     
     

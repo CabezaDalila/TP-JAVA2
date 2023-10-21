@@ -75,10 +75,10 @@ public class Feria {
         }
         
         
-        /*System.out.println("Termino la funcion agregaStand a cliente"); 
+        System.out.println("Termino la funcion agregaStand a cliente"); 
         System.out.println("Cant stands en cte:"); 
-        for(Cliente cliente:listaClientes){
-            System.out.println("tamanio de la lista stands: "+cliente.getListaStands().size()); 
+        /*for(Cliente cliente:listaClientes){
+            System.out.println("DATOS "+cliente.toString()); 
         }*/
     }
     

@@ -15,6 +15,7 @@ public class Sistema {
         PantallaPrincipal principal = new PantallaPrincipal();
         principal.setVisible(true);
         principal.setLocationRelativeTo(null);
+        //Cliente cliente=new Cliente();
         feria=Feria.getInstance();
         
         feria.cargarStands();
@@ -38,6 +39,8 @@ public class Sistema {
         
         
          feria.agregaStandAcliente();
+         
+    
     }
 }
 
