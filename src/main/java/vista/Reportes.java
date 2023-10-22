@@ -188,7 +188,8 @@ public class Reportes extends javax.swing.JFrame {
         if(listaStands!=null){
             for(Stand stand:listaStands){
                 float valor = stand.valorTotalStand();
-                Object objeto[]={stand.getIdStand(),valor,stand.getSuperficie(),stand.getPrecio(),stand.getUnCliente().getIdCliente(),stand.getListaAccesorios()};
+                StringBuilder descripcionAccesorios=stand.devuelveAccesorios();
+                Object objeto[]={stand.getIdStand(),valor,stand.getSuperficie(),stand.getPrecio(),stand.getUnCliente().getIdCliente(),descripcionAccesorios};
 
 
                 modeloTabla.addRow(objeto);
