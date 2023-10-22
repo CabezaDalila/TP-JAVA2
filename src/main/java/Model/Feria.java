@@ -18,6 +18,7 @@ public class Feria {
     public Feria(Set<Cliente> listaClientes, Set<Stand> listaStands) {
         this.listaClientes = new TreeSet<>(listaClientes);
         this.listaStands = new ArrayList<>();
+        ordenaStandDescendentePorValor();// preguntar donde estaria bien que se haga este orden, si aca en la visual, o en el get
     }
 
    //Singleton
