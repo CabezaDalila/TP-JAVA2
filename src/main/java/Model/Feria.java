@@ -27,7 +27,6 @@ public class Feria {
        }
        return feria;
    }
-    
     public Cliente buscaClientePorId(String idCliente) throws ClienteNoEncontrado{
          for (Cliente cliente : listaClientes) {
             if (cliente.getIdCliente().equals(idCliente)) {
@@ -46,17 +45,11 @@ public class Feria {
     public Set<Cliente> getListaClientes(){
         return listaClientes;
     }
-
-    public void cargarStands() {
-	CargaXML cargador = new CargaXML();
-	cargador.cargarStandsXML(this);
-    }
-
    
     public void agregaStand(Stand stand){
         listaStands.add(stand);
     }
-    
+   
     public void agregaStandAcliente(){
         ArrayList<Stand> nuevaLista=new ArrayList();
         for(Cliente cliente:listaClientes){
@@ -78,6 +71,25 @@ public class Feria {
         }*/
     }
     
+    public List<Stand> ordenaStandDescendentePorValor() {
+        List<Stand> listaOrdenada = listaStands.stream()
+                                               .sorted((stand1, stand2) -> Float.compare(stand2.valorTotalStand(), stand1.valorTotalStand()))
+                                               .toList();
+        return listaOrdenada;
+    }
+    public float valorPromedioStands(){
+        float suma=0;
+        int cont=0;
+        for(Stand stand : listaStands){
+            suma+=stand.valorTotalStand();
+            cont++;
+        }
+        return cont>0? suma/cont :0;
+    }
+    // SOLO PARA PROBAR
+       public void cargarStands() {	
+        CargaXML cargador = new CargaXML();	
+        cargador.cargarStandsXML(this);	
 
-    
+    }
 }

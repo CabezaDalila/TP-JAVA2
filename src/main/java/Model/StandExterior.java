@@ -13,7 +13,12 @@ public class StandExterior extends Stand {
     }
 
     public float  valorTotalStand(){
-        //DESARROLLAR
-        return 0;
+        float total= getSuperficie()*getPrecio() + sumaPrecioAccesorios();
+        int tamanio=tamanioLista();
+       
+        return tamanio >= 3? total-=total*0.1f : total;
     }
 }
+/*superficie * precio m2 +
+suma precios accesorios (si se contrataron 3 o más accesorios, se aplica un descuento del 10% sobre
+el precio de cada accesorio)*/

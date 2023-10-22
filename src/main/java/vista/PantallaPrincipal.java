@@ -241,7 +241,9 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesActionPerformed
-        // TODO add your handling code here:
+        Reportes ventanaReportes = new Reportes();
+        ventanaReportes.setVisible(true);
+        ventanaReportes.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnReportesActionPerformed
 
     private void btnStandsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStandsActionPerformed
