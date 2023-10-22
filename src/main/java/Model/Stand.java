@@ -1,6 +1,7 @@
 package Model;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -74,7 +75,20 @@ public abstract class Stand{
         return "Stand{" + "idStand=" + idStand + ", superficie=" + superficie + ", precioM2=" + precioM2 + ", unCliente=" + cliente + ", listaAccesorios=" + listaAccesorios + '}';
     }
     
-    
+    public StringBuilder devuelveAccesorios(){
+        ArrayList<Accesorio> lista=listaAccesorios;
+                StringBuilder descripcionAccesorios = new StringBuilder();
+                
+                for(Accesorio accesorio:lista){
+                    descripcionAccesorios.append(accesorio.getDescAccesorio()).append(", ");
+                }
+                
+                // Eliminar la coma y el espacio dek final
+                if(descripcionAccesorios.length()>0){
+                    descripcionAccesorios.deleteCharAt(descripcionAccesorios.length()-2);
+                }
+        return descripcionAccesorios;
+    }
    
 }
     
