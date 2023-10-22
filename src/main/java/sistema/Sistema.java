@@ -16,7 +16,7 @@ public class Sistema {
         principal.setLocationRelativeTo(null);
 
         feria=Feria.getInstance();
-        feria.cargarStands();
+        //feria.cargarStands();
 
         //prueba para mostrar los stands y clientes por consola
 
