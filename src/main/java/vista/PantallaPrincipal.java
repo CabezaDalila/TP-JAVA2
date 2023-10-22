@@ -35,7 +35,6 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -216,7 +215,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -235,7 +234,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -250,7 +249,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         String textoIngresado = JOptionPane.showInputDialog("Ingrese el ID del cliente del que quiere consultar sus Stands:");
         if (textoIngresado != null) {
             try{
-                Cliente cliente = feria.buscaClientePorId(textoIngresado);
+                Cliente cliente = feria.buscaClientePorId(textoIngresado.toUpperCase());
                 VerDatosCliente datosCliente = new VerDatosCliente(cliente);
                 datosCliente.setVisible(true);
                 datosCliente.setLocationRelativeTo(null);
