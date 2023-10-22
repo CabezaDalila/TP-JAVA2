@@ -16,46 +16,27 @@ public class Sistema {
         principal.setLocationRelativeTo(null);
 
         feria=Feria.getInstance();
-        
-
-        
-        /*feria.cargarStands();
-
-        //Cliente cliente=new Cliente();
-        feria=Feria.getInstance();
-        
         feria.cargarStands();
-        
-       
-        
-        
+
         //prueba para mostrar los stands y clientes por consola
 
-        feria=Feria.getInstance();
-        
-        feria.cargarStands();
-
+  
         feria=Feria.getInstance();
 
-        List<Stand> listaStandsFeria = feria.getListaStands();
-       
+        List<Stand> listaStandsFeria = feria.ordenaStandDescendentePorValor();
+        System.out.println("LISTA ORDENADA:");
         for (Stand stand : listaStandsFeria) {
-            System.out.println(stand.toString());
-            
+            System.out.println(stand.toString());  
         }
-        Set<Cliente> listaClientesFeria= feria.getListaClientes();
+        
+        /*Set<Cliente> listaClientesFeria= feria.getListaClientes();
         for(Cliente cliente : listaClientesFeria){
             System.out.println(cliente.toString());
-
-        }*/
-
-        
-       /* for (Cliente cliente : listaClientesFeria) {
-            System.out.println(cliente.toString()); 
         }
+        */
+       
         //fin prueba
-        
-         */
+  
     
 
     }

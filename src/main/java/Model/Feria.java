@@ -18,7 +18,6 @@ public class Feria {
     public Feria(Set<Cliente> listaClientes, Set<Stand> listaStands) {
         this.listaClientes = new TreeSet<>(listaClientes);
         this.listaStands = new ArrayList<>();
-        ordenaStandDescendentePorValor();// preguntar donde estaria bien que se haga este orden, si aca en la visual, o en el get
     }
 
    //Singleton
@@ -28,11 +27,6 @@ public class Feria {
        }
        return feria;
    }
-    public void cargarStands() {	
-        CargaXML cargador = new CargaXML();	
-        cargador.cargarStandsXML(this);	
-
-    }
     public Cliente buscaClientePorId(String idCliente) throws ClienteNoEncontrado{
          for (Cliente cliente : listaClientes) {
             if (cliente.getIdCliente().equals(idCliente)) {
@@ -55,7 +49,7 @@ public class Feria {
     public void agregaStand(Stand stand){
         listaStands.add(stand);
     }
-    
+   
     public void agregaStandAcliente(){
         ArrayList<Stand> nuevaLista=new ArrayList();
         for(Cliente cliente:listaClientes){
@@ -78,8 +72,10 @@ public class Feria {
     }
     
     public List<Stand> ordenaStandDescendentePorValor() {
-        listaStands.sort((stand1, stand2) -> Float.compare(stand2.valorTotalStand(), stand1.valorTotalStand()));
-        return listaStands;
+        List<Stand> listaOrdenada = listaStands.stream()
+                                               .sorted((stand1, stand2) -> Float.compare(stand2.valorTotalStand(), stand1.valorTotalStand()))
+                                               .toList();
+        return listaOrdenada;
     }
     public float valorPromedioStands(){
         float suma=0;
@@ -90,6 +86,10 @@ public class Feria {
         }
         return cont>0? suma/cont :0;
     }
+    // SOLO PARA PROBAR
+       public void cargarStands() {	
+        CargaXML cargador = new CargaXML();	
+        cargador.cargarStandsXML(this);	
 
-    
+    }
 }

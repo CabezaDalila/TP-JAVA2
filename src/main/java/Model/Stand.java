@@ -71,7 +71,7 @@ public abstract class Stand{
     //Cuando se llame al metodo toString de Stands va a llamar al toString de Accesorio automaticamente
     @Override
     public String toString() {
-        return "Stand{" + "idStand=" + idStand + ", superficie=" + superficie + ", precioM2=" + precioM2 + ", unCliente=" + cliente + ", listaAccesorios=" + listaAccesorios + '}';
+        return "Stand{" + "idStand=" + idStand +", Valor Stand="+valorTotalStand() + ", superficie=" + superficie + ", precioM2=" + precioM2 + ", unCliente=" + cliente + ", listaAccesorios=" + listaAccesorios + '}';
     }
     public float sumaPrecioAccesorios(){
         float total=0;
