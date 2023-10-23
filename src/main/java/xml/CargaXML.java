@@ -54,6 +54,7 @@ public class CargaXML {
 
                             Accesorio accesorio = new Accesorio(idAccesorio, descAccesorio, precioAlquiler);
                             listaAccesorios.add(accesorio);
+                            feria.agregarAccesorio(accesorio);
                         }
                     }
                     Cliente cliente = new Cliente(idClienteStand,descCliente);

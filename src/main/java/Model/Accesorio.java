@@ -2,7 +2,7 @@
 package Model;
 
 
-public class Accesorio {
+public class Accesorio implements Comparable<Accesorio>{
     private String idAccesorio;
     private String descAccesorio;
     private double precioAlquiler;
@@ -22,6 +22,10 @@ public class Accesorio {
 
     public void setIdAccesorio(String idAccesorio) {
         this.idAccesorio = idAccesorio;
+    }
+
+    public int compareTo(Accesorio otroAccesorio) {
+       return this.idAccesorio.compareTo(otroAccesorio.idAccesorio);
     }
 
     public String getDescAccesorio() {

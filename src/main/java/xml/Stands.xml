@@ -101,7 +101,7 @@
             <descCliente>Pepe Gomez</descCliente>
         </cliente>  
         <accesorio>
-            <idAccesorio>AC01</idAccesorio>
+            <idAccesorio>ACSO1</idAccesorio>
             <descAccesorio>TV</descAccesorio>
             <precioAlquiler>50</precioAlquiler>
         </accesorio>

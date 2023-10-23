@@ -5,7 +5,10 @@
 package vista;
 
 import Model.*;
+import java.io.IOException;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
 
@@ -22,10 +25,10 @@ public class Reportes extends javax.swing.JFrame {
     public Reportes() {
         initComponents();
         feria = Feria.getInstance();
-        cargarTablaStand();
         float valorPromedio = feria.valorPromedioStands();
         promedio.setText(String.format("%.2f", valorPromedio));
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        cargarTablaStand();
     }
 
     /**
@@ -156,11 +159,16 @@ public class Reportes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtnDescargarAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnDescargarAccActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jBtnDescargarAccActionPerformed
 
     private void jBtnDescargarStandsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnDescargarStandsActionPerformed
-        // TODO add your handling code here:
+        try {
+            feria.generaTxtReporteStands();
+            JOptionPane.showMessageDialog(null, "El archivo TXT fue generado con éxito");
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, "El archivo NO fue generado", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jBtnDescargarStandsActionPerformed
     
     private void cargarTablaStand() {
@@ -173,14 +181,11 @@ public class Reportes extends javax.swing.JFrame {
             }
             
         };
-        
-        //poner titulos a las columnas
+  
         String titulos[]={"ID","Valor","Superficie","Precio M2","Cliente","Accesorios"};
         modeloTabla.setColumnIdentifiers(titulos);
         
         ReporteStands.setModel(modeloTabla);
-        
-        //traer stands que tiene el cliente
         
         List<Stand> listaStands= feria.ordenaStandDescendentePorValor();
          
@@ -199,6 +204,7 @@ public class Reportes extends javax.swing.JFrame {
         ReporteStands.setModel(modeloTabla);
         
     }
+    
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
