@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package vista;
 
 import Model.*;
@@ -192,11 +188,8 @@ public class Reportes extends javax.swing.JFrame {
         //setear los datos en la tabla
         if(listaStands!=null){
             for(Stand stand:listaStands){
-                float valor = stand.valorTotalStand();
                 StringBuilder descripcionAccesorios=stand.devuelveAccesorios();
-                Object objeto[]={stand.getIdStand(),valor,stand.getSuperficie(),stand.getPrecio(),stand.getUnCliente().getIdCliente(),descripcionAccesorios};
-
-
+                Object objeto[]={stand.getIdStand(),stand.valorTotalStand(),stand.getSuperficie(),stand.getPrecio(),stand.getUnCliente().getIdCliente(),descripcionAccesorios};
                 modeloTabla.addRow(objeto);
             }
         }
@@ -204,8 +197,37 @@ public class Reportes extends javax.swing.JFrame {
         ReporteStands.setModel(modeloTabla);
         
     }
-    
-    
+     //CATA
+      private void cargarTablaAcc() {
+        //para que las filas y columnas no se puedan editar
+        DefaultTableModel modeloTabla=new DefaultTableModel(){
+            
+            @Override
+            public boolean isCellEditable(int row,int colum){
+                return false;
+            }
+            
+        };
+        //CAMBIAR TITULOS POR LAS VARIABLES QUE TENGA ACC O LAS QUE TENGAS QUE MOSTRAR 
+        String titulos[]={"ID","Valor","Superficie","Precio M2","Cliente","Accesorios"};
+        modeloTabla.setColumnIdentifiers(titulos);
+        
+        ReporteStands.setModel(modeloTabla);
+        
+        Map<Stand> listaAcc= feria.reporteAccesorios();// 
+         
+        //setear los datos en la tabla, recorriendo el Treemap que creaste en feria
+        if(listaStands!=null){
+            for(Stand stand:listaStands){
+                //Modificicar los get.
+                Object objeto[]={stand.getIdStand(),stand.valorTotalStand(),stand.getSuperficie(),stand.getPrecio(),stand.getUnCliente().getIdCliente(),descripcionAccesorios};
+                modeloTabla.addRow(objeto);
+            }
+        }
+        
+        ReporteStands.setModel(modeloTabla);
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable ReporteAccesorios;

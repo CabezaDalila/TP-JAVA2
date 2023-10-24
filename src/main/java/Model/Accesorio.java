@@ -19,7 +19,7 @@ public class Accesorio implements Comparable<Accesorio>{
     public String getIdAccesorio() {
         return idAccesorio;
     }
-
+            
     public void setIdAccesorio(String idAccesorio) {
         this.idAccesorio = idAccesorio;
     }
@@ -53,6 +53,10 @@ public class Accesorio implements Comparable<Accesorio>{
     @Override
     public String toString() {
         return "Accesorio{" + "idAccesorio=" + idAccesorio + ", descAccesorio=" + descAccesorio + ", precioAlquiler=" + precioAlquiler + '}';
+    }
+
+    int compare(Accesorio acc2) {
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
     
 }

@@ -5,9 +5,6 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 
-
-
-
 public class Cliente implements Comparable<Cliente>{
     private String idCliente;
     private String descCliente;

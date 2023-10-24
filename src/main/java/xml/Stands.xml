@@ -32,6 +32,38 @@
         <cantLuminarias>5</cantLuminarias>
         </standInterior>
     </stand>
+     <stand>
+    <standInterior>
+        <idStand>STD01</idStand>
+        <superficie>40</superficie>
+        <precioM2>30</precioM2>
+        <cliente>
+            <idCliente>CTE01</idCliente>
+            <descCliente>Pepe Gomez</descCliente>
+        </cliente>  
+        <accesorio>
+            <idAccesorio>ACS01</idAccesorio>
+            <descAccesorio>TV</descAccesorio>
+            <precioAlquiler>50</precioAlquiler>
+        </accesorio>
+        <accesorio>
+            <idAccesorio>ACS02</idAccesorio>
+            <descAccesorio>mesa</descAccesorio>
+            <precioAlquiler>30</precioAlquiler>
+        </accesorio>
+        <accesorio>
+            <idAccesorio>ACS03</idAccesorio>
+            <descAccesorio>silla</descAccesorio>
+            <precioAlquiler>15</precioAlquiler>
+        </accesorio>
+        <accesorio>
+            <idAccesorio>ACS04</idAccesorio>
+            <descAccesorio>notebook</descAccesorio>
+            <precioAlquiler>80</precioAlquiler>
+        </accesorio>
+        <cantLuminarias>5</cantLuminarias>
+        </standInterior>
+    </stand>
     <stand>
         <standInterior>
             <idStand>STD02</idStand>
