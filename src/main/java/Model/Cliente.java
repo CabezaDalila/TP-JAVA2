@@ -83,7 +83,7 @@ public class Cliente implements Comparable<Cliente>{
         return "Cliente{" + "idCliente=" + idCliente + ", descCliente=" + descCliente + ", listaStands=" + listaStands + '}';
     }
     
-    void agregaStand(ArrayList<Stand> nuevaLista) {
+    void agregaStands(ArrayList<Stand> nuevaLista) {
       if (listaStands == null) {
         listaStands = new ArrayList<>();
       }

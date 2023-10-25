@@ -67,7 +67,7 @@ public abstract class Stand{
     public void agregaAccesorio(Accesorio accesorio){
         listaAccesorios.add(accesorio);
     }
-    public abstract float  valorTotalStand();
+    public abstract float  valorTotalStand();//podria ser no abs y sup*precio podria eesatr aca, no es obligacion q sea abs para q sea polimorfo
     
     //Cuando se llame al metodo toString de Stands va a llamar al toString de Accesorio automaticamente
     @Override

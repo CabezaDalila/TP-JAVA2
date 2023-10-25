@@ -72,11 +72,11 @@ public class Feria {
                 }
             }
             //System.out.println("tamanio de la lista nueva:  "+nuevaLista.size()); 
-            cliente.agregaStand(nuevaLista);
+            cliente.agregaStands(nuevaLista);
             nuevaLista.clear();
         }
         
-        
+        // 
         //System.out.println("Termino la funcion agregaStand a cliente"); 
         //System.out.println("Cant stands en cte:"); 
         /*for(Cliente cliente:listaClientes){
