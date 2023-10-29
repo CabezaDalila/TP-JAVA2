@@ -1,11 +1,13 @@
 
 package Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
 
 
-public class Cliente implements Comparable<Cliente>{
+public class Cliente implements Comparable<Cliente>,Serializable{
+    private static final long serialVersionUID = 1L;
     private String idCliente;
     private String descCliente;
     private ArrayList<Stand> listaStands;

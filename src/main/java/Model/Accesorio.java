@@ -1,8 +1,11 @@
 
 package Model;
 
+import java.io.Serializable;
 
-public class Accesorio implements Comparable<Accesorio>{
+
+public class Accesorio implements Comparable<Accesorio>,Serializable{
+    private static final long serialVersionUID = 1L;
     private String idAccesorio;
     private String descAccesorio;
     private double precioAlquiler;

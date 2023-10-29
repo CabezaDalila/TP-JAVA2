@@ -1,10 +1,11 @@
 
 package Model;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
-public class StandExterior extends Stand {
-
+public class StandExterior extends Stand implements Serializable{
+    private static final long serialVersionUID = 1L;
     public StandExterior() {
     }
 
