@@ -5,12 +5,17 @@ import java.util.List;
 import java.util.Objects;
 
 
-public abstract class Stand{
+public abstract class Stand implements Comparable<Stand>{
     private String idStand;
     private int superficie;
     private float precioM2;
     private Cliente cliente;
     private ArrayList<Accesorio>listaAccesorios;
+    
+    @Override
+    public int compareTo(Stand o){
+        return this.idStand.compareTo(o.idStand);
+    }
     
 
     public Stand() {
@@ -22,6 +27,28 @@ public abstract class Stand{
         this.precioM2 = precioM2;
         this.cliente = cliente;
         this.listaAccesorios = listaAccesorios;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 61 * hash + Objects.hashCode(this.idStand);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Stand other = (Stand) obj;
+        return Objects.equals(this.idStand, other.idStand);
     }
 
     public String getIdStand() {
@@ -69,7 +96,6 @@ public abstract class Stand{
     }
     public abstract float  valorTotalStand();//podria ser no abs y sup*precio podria eesatr aca, no es obligacion q sea abs para q sea polimorfo
     
-    //Cuando se llame al metodo toString de Stands va a llamar al toString de Accesorio automaticamente
     @Override
     public String toString() {
         return "Stand{" + "idStand=" + idStand +", Valor Stand="+valorTotalStand() + ", superficie=" + superficie + ", precioM2=" + precioM2 + ", unCliente=" + cliente + ", listaAccesorios=" + listaAccesorios + '}';
@@ -94,7 +120,7 @@ public abstract class Stand{
                     descripcionAccesorios.append(accesorio.getDescAccesorio()).append(", ");
                 }
                 
-                // Eliminar la coma y el espacio dek final
+                // Eliminar la coma y el espacio del final
                 if(descripcionAccesorios.length()>0){
                     descripcionAccesorios.deleteCharAt(descripcionAccesorios.length()-2);
                 }

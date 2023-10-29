@@ -19,15 +19,16 @@ public class Accesorio implements Comparable<Accesorio>{
     public String getIdAccesorio() {
         return idAccesorio;
     }
-
+            
     public void setIdAccesorio(String idAccesorio) {
         this.idAccesorio = idAccesorio;
     }
 
+    @Override
     public int compareTo(Accesorio otroAccesorio) {
        return this.idAccesorio.compareTo(otroAccesorio.idAccesorio);
     }
-
+    
     public String getDescAccesorio() {
         return descAccesorio;
     }
@@ -40,7 +41,7 @@ public class Accesorio implements Comparable<Accesorio>{
         return precioAlquiler;
     }
 
-    public void setPrecioAlquiler(float precioAlquiler) {
+    public void setPrecioAlquiler(double precioAlquiler) {
         this.precioAlquiler = precioAlquiler;
     }
     
@@ -53,6 +54,10 @@ public class Accesorio implements Comparable<Accesorio>{
     @Override
     public String toString() {
         return "Accesorio{" + "idAccesorio=" + idAccesorio + ", descAccesorio=" + descAccesorio + ", precioAlquiler=" + precioAlquiler + '}';
+    }
+
+    int compare(Accesorio acc2) {
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
     
 }

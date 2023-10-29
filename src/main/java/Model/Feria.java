@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Model;
 import java.util.*;
 import Excepciones.ClienteNoEncontrado;
@@ -9,17 +6,11 @@ import xml.*;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-/**
- *
- * @author dalilacabeza
- */
+
 public class Feria {
     private static Feria feria;
     private Set<Cliente> listaClientes;
     private static List<Stand> listaStands;
-    // crear un listado donde esten todos los acc, apartte para poder generar el reporte, fijarme para q no se carguen repetidos
     private Set<Accesorio> listaAccesorios;
 
     public Feria(Set<Cliente> listaClientes, Set<Stand> listaStands,Set<Accesorio> listaAccesorios) {
@@ -60,9 +51,15 @@ public class Feria {
     }
    
     public void agregaStand(Stand stand){
-        listaStands.add(stand);
+        if (!listaStands.contains(stand)) {
+            listaStands.add(stand);
+        }
     }
-   
+
+    public void ordenadListaStands(){
+        Collections.sort(listaStands);
+    }
+    
     public void agregaStandAcliente(){
         ArrayList<Stand> nuevaLista=new ArrayList();
         for(Cliente cliente:listaClientes){
@@ -83,7 +80,7 @@ public class Feria {
             System.out.println("DATOS "+cliente.toString()); 
         }*/
     }
-    
+    //Recorrido con stream
     public static List<Stand> ordenaStandDescendentePorValor() {
         List<Stand> listaOrdenada = listaStands.stream()
                                                .sorted((stand1, stand2) -> Float.compare(stand2.valorTotalStand(), stand1.valorTotalStand()))
@@ -91,11 +88,14 @@ public class Feria {
         return listaOrdenada;
     }
     
+    //Recorrido con iterator
     public float valorPromedioStands(){
         float suma=0;
         int cont=0;
-        for(Stand stand : listaStands){
-            suma+=stand.valorTotalStand();
+        Iterator<Stand> it = listaStands.iterator();
+        while(it.hasNext()){
+            Stand stand= it.next();
+            suma=+stand.valorTotalStand();
             cont++;
         }
         return cont>0? suma/cont :0;
@@ -107,29 +107,48 @@ public class Feria {
 
     }
     
-   public void generaTxtReporteStands() throws IOException {
+    //Recorrido con for each
+    //Se podria haber usado NIO.2 que es mas nuevo, y mejora el uso
+    public void generaTxtReporteStands() throws IOException {
         String nombreArchivo = "Reporte de Stands.txt";
         FileWriter fileWriter = new FileWriter(nombreArchivo);
-        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-
-        bufferedWriter.write("Listado completo de stands ordenados descendentemente por su valor total:\n");
-        List<Stand> listaStandsOrdenados = ordenaStandDescendentePorValor();
-
-        for (Stand stand : listaStandsOrdenados) {
-            bufferedWriter.write("Id Stand: "+stand.getIdStand());
-            float valor = stand.valorTotalStand();
-            bufferedWriter.write(" Valor del Stand: "+ valor );
-            bufferedWriter.write(" Superficie: "+stand.getSuperficie());
-            bufferedWriter.write(" Precio metro2: "+stand.getPrecio()+ "\n");
-            bufferedWriter.write("Listado de acceosrios:\n");
-            for(Accesorio acc : stand.getListaAccesorios())
-                bufferedWriter.write(acc.getIdAccesorio()+ "\n");
+        try (BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
+            bufferedWriter.write("Listado completo de stands ordenados descendentemente por su valor total:\n");
+            List<Stand> listaStandsOrdenados = ordenaStandDescendentePorValor();
+            for (Stand stand : listaStandsOrdenados) {
+                bufferedWriter.write("Id Stand: "+stand.getIdStand());
+                bufferedWriter.write(" Valor del Stand: "+ stand.valorTotalStand());
+                bufferedWriter.write(" Superficie: "+stand.getSuperficie());
+                bufferedWriter.write(" Precio metro2: "+stand.getPrecio()+ "\n");
+                bufferedWriter.write("Listado de acceosrios:\n");
+                for(Accesorio acc : stand.getListaAccesorios())
+                    bufferedWriter.write(acc.getIdAccesorio()+ "\n");
+            }   String valorPromedio = String.valueOf(valorPromedioStands());
+            bufferedWriter.write("Valor promedio de los stands: " + valorPromedio + "\n");
         }
-
-        String valorPromedio = String.valueOf(valorPromedioStands());
-        bufferedWriter.write("Valor promedio de los stands: " + valorPromedio + "\n");
-
-        bufferedWriter.close();
-        System.out.println("Reporte generado correctamente.");
+    }
+   
+    public Map<String, Integer> reporteAccesorios() {
+        Map<String, Integer> AccOrdenada = new TreeMap<>();
+        for (Stand stand : listaStands) {
+            ArrayList<Accesorio> listaAccStand = stand.getListaAccesorios();
+            for(Accesorio acc : listaAccStand){
+                String descAccesorio = acc.getDescAccesorio().toUpperCase();
+                AccOrdenada.putIfAbsent(descAccesorio, 0); 
+                int valorActual = AccOrdenada.get(descAccesorio);
+                valorActual++;
+                AccOrdenada.put(descAccesorio, valorActual); 
+            }
+             
+        }
+        return AccOrdenada;
+    }
+    public Accesorio buscarAccesorioPorDescripcion(String descripcion) {
+        for (Accesorio acc : listaAccesorios) {
+            if (acc.getDescAccesorio().equalsIgnoreCase(descripcion)) {
+                return acc;
+            }
+        }
+        return null; 
     }
 }
