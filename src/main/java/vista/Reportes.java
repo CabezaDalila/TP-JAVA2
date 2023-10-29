@@ -25,6 +25,7 @@ public class Reportes extends javax.swing.JFrame {
         promedio.setText(String.format("%.2f", valorPromedio));
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         cargarTablaStand();
+        cargarTablaAcc();
     }
 
     /**
@@ -37,9 +38,9 @@ public class Reportes extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        ReporteAccesorios = new javax.swing.JTable();
+        TablaReporteAccesorios = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
-        ReporteStands = new javax.swing.JTable();
+        TablaReporteStands = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jBtnDescargarAcc = new javax.swing.JButton();
@@ -49,7 +50,7 @@ public class Reportes extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        ReporteAccesorios.setModel(new javax.swing.table.DefaultTableModel(
+        TablaReporteAccesorios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -60,9 +61,9 @@ public class Reportes extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(ReporteAccesorios);
+        jScrollPane1.setViewportView(TablaReporteAccesorios);
 
-        ReporteStands.setModel(new javax.swing.table.DefaultTableModel(
+        TablaReporteStands.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -73,7 +74,7 @@ public class Reportes extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(ReporteStands);
+        jScrollPane2.setViewportView(TablaReporteStands);
 
         jLabel1.setText("Accesorios ");
 
@@ -181,7 +182,7 @@ public class Reportes extends javax.swing.JFrame {
         String titulos[]={"ID","Valor","Superficie","Precio M2","Cliente","Accesorios"};
         modeloTabla.setColumnIdentifiers(titulos);
         
-        ReporteStands.setModel(modeloTabla);
+        TablaReporteStands.setModel(modeloTabla);
         
         List<Stand> listaStands= feria.ordenaStandDescendentePorValor();
          
@@ -194,7 +195,7 @@ public class Reportes extends javax.swing.JFrame {
             }
         }
         
-        ReporteStands.setModel(modeloTabla);
+        TablaReporteStands.setModel(modeloTabla);
         
     }
      //CATA
@@ -209,29 +210,36 @@ public class Reportes extends javax.swing.JFrame {
             
         };
         //CAMBIAR TITULOS POR LAS VARIABLES QUE TENGA ACC O LAS QUE TENGAS QUE MOSTRAR 
-        String titulos[]={"ID","Valor","Superficie","Precio M2","Cliente","Accesorios"};
+        String titulos[]={"ID","Descripcion","Precio","Cant de usos"};
         modeloTabla.setColumnIdentifiers(titulos);
         
-        ReporteStands.setModel(modeloTabla);
+        TablaReporteAccesorios.setModel(modeloTabla);
         
-        Map<Stand> listaAcc= feria.reporteAccesorios();// 
-         
-        //setear los datos en la tabla, recorriendo el Treemap que creaste en feria
-        if(listaStands!=null){
-            for(Stand stand:listaStands){
-                //Modificicar los get.
-                Object objeto[]={stand.getIdStand(),stand.valorTotalStand(),stand.getSuperficie(),stand.getPrecio(),stand.getUnCliente().getIdCliente(),descripcionAccesorios};
+        Map<String,Integer> listaUsos= feria.reporteAccesorios();
+        Set <Accesorio> listaAcc = feria.getListaAccesorios();
+        
+
+        for (Map.Entry<String, Integer> entry : listaUsos.entrySet()) {
+           Integer valor = entry.getValue();
+           String clave = entry.getKey();
+           Accesorio accesorio = feria.buscarAccesorioPorDescripcion(clave);
+          
+           if (accesorio != null){
+                Object objeto[]={accesorio.getIdAccesorio(),accesorio.getDescAccesorio(),accesorio.getPrecioAlquiler(),valor};
+                //System.out.println("REPORTE: "+accesorio.toString());
                 modeloTabla.addRow(objeto);
-            }
-        }
+           }
+         
+       }
         
-        ReporteStands.setModel(modeloTabla);
+      
+        TablaReporteAccesorios.setModel(modeloTabla);
         
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable ReporteAccesorios;
-    private javax.swing.JTable ReporteStands;
+    private javax.swing.JTable TablaReporteAccesorios;
+    private javax.swing.JTable TablaReporteStands;
     private javax.swing.JButton jBtnDescargarAcc;
     private javax.swing.JButton jBtnDescargarStands;
     private javax.swing.JLabel jLabel1;

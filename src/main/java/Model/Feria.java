@@ -127,39 +127,28 @@ public class Feria {
             bufferedWriter.write("Valor promedio de los stands: " + valorPromedio + "\n");
         }
     }
-    public Set<Accesorio> reporteAccesorios(){
-        /*Ordena alfabeticamente 
-        Set<Accesorio> listaAccNueva = new HashSet<>(); // Crea un nuevo conjunto
-
-        Iterator <Accesorio> it = listaAccesorios.iterator();
-        while(it.hasNext()){
-            Accesorio acc = it.next();
-            listaAccNueva.add(acc); // Agrega el accesorio a la nueva lista
-        }
-
-        // Ordenar la nueva lista usando un comparador
-        List<Accesorio> listaOrdenada = new ArrayList<>(listaAccNueva);
-        Collections.sort(listaOrdenada, new Comparator<Accesorio>() {
-            @Override
-            public int compare(Accesorio acc1, Accesorio acc2) {
-                return acc1.compare(acc2); // Usa el método compare de Accesorio
-            }
-        });
-
-        return new LinkedHashSet<>(listaOrdenada); // Devuelve un conjunto ordenado
-        */
-    }
-    /* VA ESTO
-    Si no existe la clave 
-        treeMap.add(acc.descAcce,1);
-    Si ya existe la clave 
    
-         Obtener el valor asociado a la clave específica
-        int valorActual = treeMap.get(claveEspecifica);
-        Actualizar el valor en el TreeMap
-        treeMap.put(claveEspecifica, valorActual++);
-    */
-        
-    //mientras que vas recorriendo hacer un TreeMap que guarde el id y se aumente el valor en 1 cuando aparece el mismo accesorio
-    
+    public Map<String, Integer> reporteAccesorios() {
+        Map<String, Integer> AccOrdenada = new TreeMap<>();
+        for (Stand stand : listaStands) {
+            ArrayList<Accesorio> listaAccStand = stand.getListaAccesorios();
+            for(Accesorio acc : listaAccStand){
+                String descAccesorio = acc.getDescAccesorio().toUpperCase();
+                AccOrdenada.putIfAbsent(descAccesorio, 0); 
+                int valorActual = AccOrdenada.get(descAccesorio);
+                valorActual++;
+                AccOrdenada.put(descAccesorio, valorActual); 
+            }
+             
+        }
+        return AccOrdenada;
+    }
+    public Accesorio buscarAccesorioPorDescripcion(String descripcion) {
+        for (Accesorio acc : listaAccesorios) {
+            if (acc.getDescAccesorio().equalsIgnoreCase(descripcion)) {
+                return acc;
+            }
+        }
+        return null; 
+    }
 }

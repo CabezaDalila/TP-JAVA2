@@ -16,7 +16,7 @@ public class Sistema {
         principal.setLocationRelativeTo(null);
 
         feria=Feria.getInstance();
-        feria.cargarStands();
+        //feria.cargarStands();
 
         //prueba para mostrar los stands y clientes por consola
 
@@ -32,16 +32,21 @@ public class Sistema {
         /*Set<Cliente> listaClientesFeria= feria.getListaClientes();
         for(Cliente cliente : listaClientesFeria){
             System.out.println(cliente.toString());
+        }*/
+        Map<String, Integer> listaAcc = feria.reporteAccesorios();
+        for (Map.Entry<String, Integer> entry : listaAcc.entrySet()) {
+            String clave = entry.getKey();
+            Integer valor = entry.getValue();
+            System.out.println("Clave: " + clave + ", Valor: " + valor);
         }
-        
        
         //fin prueba
         
-        Set<Accesorio> listaAcc = feria.getListaAccesorios();
-        for(Accesorio accesorio : listaAcc){
+        /*Set<Accesorio> listaAcc1 = feria.getListaAccesorios();
+        for(Accesorio accesorio : listaAcc1){
             System.out.println(accesorio.toString());
-        }
-        */
+        }*/
+        
 
     }
     

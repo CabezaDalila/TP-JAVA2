@@ -11,7 +11,7 @@
         </cliente>  
         <accesorio>
             <idAccesorio>ACS01</idAccesorio>
-            <descAccesorio>TV</descAccesorio>
+            <descAccesorio>tv</descAccesorio>
             <precioAlquiler>50</precioAlquiler>
         </accesorio>
         <accesorio>
@@ -43,7 +43,7 @@
         </cliente>  
         <accesorio>
             <idAccesorio>ACS01</idAccesorio>
-            <descAccesorio>TV</descAccesorio>
+            <descAccesorio>tv</descAccesorio>
             <precioAlquiler>50</precioAlquiler>
         </accesorio>
         <accesorio>
@@ -133,8 +133,8 @@
             <descCliente>Pepe Gomez</descCliente>
         </cliente>  
         <accesorio>
-            <idAccesorio>ACSO1</idAccesorio>
-            <descAccesorio>TV</descAccesorio>
+            <idAccesorio>ACS01</idAccesorio>
+            <descAccesorio>tv</descAccesorio>
             <precioAlquiler>50</precioAlquiler>
         </accesorio>
         <accesorio>
@@ -160,9 +160,9 @@
             <precioAlquiler>25</precioAlquiler>
         </accesorio>
         <accesorio>
-            <idAccesorio>ACS10</idAccesorio>
-            <descAccesorio>altavoces</descAccesorio>
-            <precioAlquiler>55</precioAlquiler>
+            <idAccesorio>ACS01</idAccesorio>
+            <descAccesorio>tv</descAccesorio>
+            <precioAlquiler>50</precioAlquiler>
         </accesorio>
         <accesorio>
             <idAccesorio>ACS03</idAccesorio>

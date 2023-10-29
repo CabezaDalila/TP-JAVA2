@@ -24,10 +24,11 @@ public class Accesorio implements Comparable<Accesorio>{
         this.idAccesorio = idAccesorio;
     }
 
+    @Override
     public int compareTo(Accesorio otroAccesorio) {
        return this.idAccesorio.compareTo(otroAccesorio.idAccesorio);
     }
-
+    
     public String getDescAccesorio() {
         return descAccesorio;
     }
@@ -40,7 +41,7 @@ public class Accesorio implements Comparable<Accesorio>{
         return precioAlquiler;
     }
 
-    public void setPrecioAlquiler(float precioAlquiler) {
+    public void setPrecioAlquiler(double precioAlquiler) {
         this.precioAlquiler = precioAlquiler;
     }
     
