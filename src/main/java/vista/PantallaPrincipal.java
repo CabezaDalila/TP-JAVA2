@@ -261,14 +261,18 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnStandsActionPerformed
 
     private void btnCargarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarDatosActionPerformed
-        CargaXML cargador = new CargaXML();
-        boolean cargaExitosa = cargador.cargarStandsXML(feria);
-        if (cargaExitosa) {
-            JOptionPane.showMessageDialog(this, "La carga fue exitosa", "Carga Exitosa", JOptionPane.INFORMATION_MESSAGE);
-            feria.agregaStandAcliente();
-        } else {
-            JOptionPane.showMessageDialog(this, "Hubo un error en la carga", "Error en la Carga", JOptionPane.ERROR_MESSAGE);
+        if(feria.getListaStands().size()==0){
+            CargaXML cargador = new CargaXML();
+            boolean cargaExitosa = cargador.cargarStandsXML(feria);
+            if (cargaExitosa) {
+                JOptionPane.showMessageDialog(this, "La carga fue exitosa", "Carga Exitosa", JOptionPane.INFORMATION_MESSAGE);
+                feria.agregaStandAcliente();
+            } else 
+                JOptionPane.showMessageDialog(this, "Hubo un error en la carga", "Error en la Carga", JOptionPane.ERROR_MESSAGE);
         }
+        else
+            JOptionPane.showMessageDialog(this, "Los datos ya fueron cargados", "Error en la Carga", JOptionPane.ERROR_MESSAGE);
+
     }//GEN-LAST:event_btnCargarDatosActionPerformed
 
     private void btnPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrincipalActionPerformed
