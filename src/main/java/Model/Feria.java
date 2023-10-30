@@ -110,8 +110,8 @@ public class Feria {
     //Recorrido con for each
     //Se podria haber usado NIO.2 que es mas nuevo, y mejora el uso
     public void generaTxtReporteStands() throws IOException {
-        String nombreArchivo = "Reporte de Stands.txt";
-        FileWriter fileWriter = new FileWriter(nombreArchivo);
+        String Archivo = "Reporte de Stands.txt";
+        FileWriter fileWriter = new FileWriter(Archivo);
         try (BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
             bufferedWriter.write("Listado completo de stands ordenados descendentemente por su valor total:\n");
             List<Stand> listaStandsOrdenados = ordenaStandDescendentePorValor();
@@ -123,8 +123,10 @@ public class Feria {
                 bufferedWriter.write("Listado de acceosrios:\n");
                 for(Accesorio acc : stand.getListaAccesorios())
                     bufferedWriter.write(acc.getIdAccesorio()+ "\n");
+                bufferedWriter.write("\n");
             }   String valorPromedio = String.valueOf(valorPromedioStands());
             bufferedWriter.write("Valor promedio de los stands: " + valorPromedio + "\n");
+            
         }
     }
    
@@ -150,5 +152,26 @@ public class Feria {
             }
         }
         return null; 
+    }
+    
+    public void generaTxtReporteAccesorios() throws IOException{
+        String Archivo = "Reporte de Accesorios.txt";
+        FileWriter fileWriter = new FileWriter(Archivo);
+        try (BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
+            bufferedWriter.write("Listado de accesorios ordenado alfabeticamente por su descripcion:\n");
+            Map<String, Integer> accOrdenados= reporteAccesorios(); 
+            Set <Accesorio> listaAcc = listaAccesorios;
+            for(Map.Entry<String, Integer> entry : accOrdenados.entrySet()){
+                bufferedWriter.write("Descripcion Accesorio: "+ entry.getKey()+"\n");
+                bufferedWriter.write("Cantidad de usos: "+ entry.getValue()+"\n");
+                for (Accesorio acc : listaAcc) {
+                    if (acc.getDescAccesorio().toLowerCase().equals(entry.getKey().toLowerCase())) {
+                        bufferedWriter.write("Precio: " + acc.getPrecioAlquiler() + "\n");
+                        break; 
+                    }
+                }
+            bufferedWriter.write("\n");
+            }
+        }
     }
 }
