@@ -156,7 +156,13 @@ public class Reportes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBtnDescargarAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnDescargarAccActionPerformed
-        
+        try {
+            feria.generaTxtReporteAccesorios();
+            JOptionPane.showMessageDialog(null, "El archivo TXT fue generado con éxito");
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, "El archivo NO fue generado", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+       
     }//GEN-LAST:event_jBtnDescargarAccActionPerformed
 
     private void jBtnDescargarStandsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnDescargarStandsActionPerformed
