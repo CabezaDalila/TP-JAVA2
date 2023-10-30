@@ -97,75 +97,6 @@ public class Feria implements Serializable {
         }
     }
 
-    //Recorrido con stream
-    public List<Stand> ordenaStandDescendentePorValor() {
-        List<Stand> listaOrdenada = listaStands.stream()
-                .sorted((stand1, stand2) -> Float.compare(stand2.valorTotalStand(), stand1.valorTotalStand()))
-                .toList();
-        return listaOrdenada;
-    }
-
-    //Recorrido con iterator
-    public float valorPromedioStands() {
-        float suma = 0;
-        int cont = 0;
-        Iterator<Stand> it = listaStands.iterator();
-        while (it.hasNext()) {
-            Stand stand = it.next();
-            suma = +stand.valorTotalStand();
-            cont++;
-        }
-        return cont > 0 ? suma / cont : 0;
-    }
-
-    // SOLO PARA PROBAR
-    public void cargarStands() {
-        CargaXML cargador = new CargaXML();
-        cargador.cargarStandsXML(this);
-
-    }
-
-    //Recorrido con for each
-    //Se podria haber usado NIO.2 que es mas nuevo, y mejora el uso
-    public void generaTxtReporteStands() throws IOException {
-        String Archivo = "Reporte de Stands.txt";
-        FileWriter fileWriter = new FileWriter(Archivo);
-        try (BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
-            bufferedWriter.write("Listado completo de stands ordenados descendentemente por su valor total:\n");
-            List<Stand> listaStandsOrdenados = ordenaStandDescendentePorValor();
-            for (Stand stand : listaStandsOrdenados) {
-                bufferedWriter.write("Id Stand: " + stand.getIdStand());
-                bufferedWriter.write(" Valor del Stand: " + stand.valorTotalStand());
-                bufferedWriter.write(" Superficie: " + stand.getSuperficie());
-                bufferedWriter.write(" Precio metro2: " + stand.getPrecio() + "\n");
-                bufferedWriter.write("Listado de acceosrios:\n");
-                for (Accesorio acc : stand.getListaAccesorios()) {
-                    bufferedWriter.write(acc.getIdAccesorio() + "\n");
-                }
-                bufferedWriter.write("\n");
-            }
-            String valorPromedio = String.valueOf(valorPromedioStands());
-            bufferedWriter.write("Valor promedio de los stands: " + valorPromedio + "\n");
-
-        }
-    }
-
-    public Map<String, Integer> reporteAccesorios() {
-        Map<String, Integer> AccOrdenada = new TreeMap<>();
-        for (Stand stand : listaStands) {
-            ArrayList<Accesorio> listaAccStand = stand.getListaAccesorios();
-            for (Accesorio acc : listaAccStand) {
-                String descAccesorio = acc.getDescAccesorio().toUpperCase();
-                AccOrdenada.putIfAbsent(descAccesorio, 0);
-                int valorActual = AccOrdenada.get(descAccesorio);
-                valorActual++;
-                AccOrdenada.put(descAccesorio, valorActual);
-            }
-
-        }
-        return AccOrdenada;
-    }
-
     public Accesorio buscarAccesorioPorDescripcion(String descripcion) {
         for (Accesorio acc : listaAccesorios) {
             if (acc.getDescAccesorio().equalsIgnoreCase(descripcion)) {
@@ -209,37 +140,5 @@ public class Feria implements Serializable {
     public String getNombreFeria() {
         return nombreFeria;
     }
-
-    //prueba
-    public void agregarStandNuevo() {
-
-        Cliente clienteNuevo = new Cliente();
-
-        Stand standNuevo = new StandExterior("ID NUEVO", 500, 200, null, null);
-        ArrayList<Accesorio> listaAccesoriosArrayList = new ArrayList<>(listaAccesorios);
-        standNuevo.setListaAccesorios(listaAccesoriosArrayList);
-        standNuevo.setUnCliente(clienteNuevo);
-        listaStands.add(standNuevo);
-    }
-
-    public void generaTxtReporteAccesorios() throws IOException {
-        String Archivo = "Reporte de Accesorios.txt";
-        FileWriter fileWriter = new FileWriter(Archivo);
-        try (BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
-            bufferedWriter.write("Listado de accesorios ordenado alfabeticamente por su descripcion:\n");
-            Map<String, Integer> accOrdenados = reporteAccesorios();
-            Set<Accesorio> listaAcc = listaAccesorios;
-            for (Map.Entry<String, Integer> entry : accOrdenados.entrySet()) {
-                bufferedWriter.write("Descripcion Accesorio: " + entry.getKey() + "\n");
-                bufferedWriter.write("Cantidad de usos: " + entry.getValue() + "\n");
-                for (Accesorio acc : listaAcc) {
-                    if (acc.getDescAccesorio().toLowerCase().equals(entry.getKey().toLowerCase())) {
-                        bufferedWriter.write("Precio: " + acc.getPrecioAlquiler() + "\n");
-                        break;
-                    }
-                }
-                bufferedWriter.write("\n");
-            }
-        }
-    }
+  
 }

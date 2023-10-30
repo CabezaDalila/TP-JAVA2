@@ -1,6 +1,7 @@
 package vista;
 
 import Model.*;
+import Model.Reportes.*;
 import java.io.IOException;
 import java.util.*;
 import javax.swing.table.DefaultTableModel;
@@ -13,6 +14,8 @@ import javax.swing.JOptionPane;
 public class Reportes extends javax.swing.JFrame {
 
     private static Feria feria;
+    ReporteAccesorios reporteAccesorios = new ReporteAccesorios();
+    ReporteStands reposteStands = new ReporteStands();
 
     /**
      * Creates new form Reportes
@@ -20,7 +23,7 @@ public class Reportes extends javax.swing.JFrame {
     public Reportes() {
         initComponents();
         feria = Feria.getInstance();
-        float valorPromedio = feria.valorPromedioStands();
+        float valorPromedio = reposteStands.valorPromedioStands();
         promedio.setText(String.format("%.2f", valorPromedio));
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         cargarTablaStand();
@@ -156,7 +159,7 @@ public class Reportes extends javax.swing.JFrame {
 
     private void jBtnDescargarAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnDescargarAccActionPerformed
         try {
-            feria.generaTxtReporteAccesorios();
+            reporteAccesorios.generaTxtReporteAccesorios();
             JOptionPane.showMessageDialog(null, "El archivo TXT fue generado con éxito");
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, "El archivo NO fue generado", "Error", JOptionPane.ERROR_MESSAGE);
@@ -166,7 +169,7 @@ public class Reportes extends javax.swing.JFrame {
 
     private void jBtnDescargarStandsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnDescargarStandsActionPerformed
         try {
-            feria.generaTxtReporteStands();
+            reposteStands.generaTxtReporteStands();
             JOptionPane.showMessageDialog(null, "El archivo TXT fue generado con éxito");
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, "El archivo NO fue generado", "Error", JOptionPane.ERROR_MESSAGE);
@@ -189,7 +192,7 @@ public class Reportes extends javax.swing.JFrame {
 
         TablaReporteStands.setModel(modeloTabla);
 
-        List<Stand> listaStands = feria.ordenaStandDescendentePorValor();
+        List<Stand> listaStands = reposteStands.ordenaStandDescendentePorValor();
 
         //setear los datos en la tabla
         if (listaStands != null) {
@@ -203,7 +206,6 @@ public class Reportes extends javax.swing.JFrame {
         TablaReporteStands.setModel(modeloTabla);
 
     }
-    //CATA
 
     private void cargarTablaAcc() {
         //para que las filas y columnas no se puedan editar
@@ -218,11 +220,8 @@ public class Reportes extends javax.swing.JFrame {
         //CAMBIAR TITULOS POR LAS VARIABLES QUE TENGA ACC O LAS QUE TENGAS QUE MOSTRAR 
         String titulos[] = {"ID", "Descripcion", "Precio", "Cant de usos"};
         modeloTabla.setColumnIdentifiers(titulos);
-
         TablaReporteAccesorios.setModel(modeloTabla);
-
-        Map<String, Integer> listaUsos = feria.reporteAccesorios();
-        Set<Accesorio> listaAcc = feria.getListaAccesorios();
+        Map<String, Integer> listaUsos = reporteAccesorios.reporteAccesoriosOrdenAlfabetico();
 
         for (Map.Entry<String, Integer> entry : listaUsos.entrySet()) {
             Integer valor = entry.getValue();
