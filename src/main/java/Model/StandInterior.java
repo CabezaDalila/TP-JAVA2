@@ -1,10 +1,13 @@
 
 package Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
 public class StandInterior extends Stand{
+    private static final long serialVersionUID = 1L;
+
     private int cantLuminarias;
     
     

@@ -1,11 +1,13 @@
 package Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 
-public abstract class Stand implements Comparable<Stand>{
+public abstract class Stand implements Comparable<Stand>, Serializable{
+    private static final long serialVersionUID = 1L;
     private String idStand;
     private int superficie;
     private float precioM2;
@@ -98,7 +100,7 @@ public abstract class Stand implements Comparable<Stand>{
     
     @Override
     public String toString() {
-        return "Stand{" + "idStand=" + idStand +", Valor Stand="+valorTotalStand() + ", superficie=" + superficie + ", precioM2=" + precioM2 + ", unCliente=" + cliente + ", listaAccesorios=" + listaAccesorios + '}';
+        return "Stand{" + "idStand=" + idStand +", Valor Stand="+valorTotalStand() + ", superficie=" + superficie + ", precioM2=" + precioM2 + ", unCliente=" + cliente.getIdCliente() + ", listaAccesorios=" + listaAccesorios.toString() + '}';
     }
     public float sumaPrecioAccesorios(){
         float total=0;
@@ -127,6 +129,7 @@ public abstract class Stand implements Comparable<Stand>{
         return descripcionAccesorios;
     }
    
+
 }
     
 
