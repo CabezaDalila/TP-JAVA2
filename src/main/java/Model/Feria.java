@@ -22,7 +22,7 @@ public class Feria implements Serializable{
     private String nombreFeria;
     
     private Set<Cliente> listaClientes;
-    private static List<Stand> listaStands;
+    private /*static*/ List<Stand> listaStands;
     private Set<Accesorio> listaAccesorios;
 
 
@@ -38,10 +38,13 @@ public class Feria implements Serializable{
        if(feria==null){
            Feria feriaSerializado=feria.recuperaSerializado();
            if(feriaSerializado==null){
+               System.out.println("VOY A CREAR UNA NUEVA FERIA");
                feria = new Feria(new HashSet<>(), new HashSet<>(), new TreeSet<>());
            }
-           else
-               feria=feriaSerializado;
+           else{
+            System.out.println("NO VOY A CREAR UNA NUEVA FERIA, LA VOY A DEVOLVER");
+            feria=feriaSerializado;
+           }
        }
        return feria;
    }
@@ -101,12 +104,12 @@ public class Feria implements Serializable{
         }*/
     }
     //Recorrido con stream
-    public static List<Stand> ordenaStandDescendentePorValor() {
+   /* public static List<Stand> ordenaStandDescendentePorValor() {
         List<Stand> listaOrdenada = listaStands.stream()
                                                .sorted((stand1, stand2) -> Float.compare(stand2.valorTotalStand(), stand1.valorTotalStand()))
                                                .toList();
         return listaOrdenada;
-    }
+    }*/
     
     //Recorrido con iterator
     public float valorPromedioStands(){
@@ -129,7 +132,7 @@ public class Feria implements Serializable{
     
     //Recorrido con for each
     //Se podria haber usado NIO.2 que es mas nuevo, y mejora el uso
-    public void generaTxtReporteStands() throws IOException {
+   /* public void generaTxtReporteStands() throws IOException {
         String nombreArchivo = "Reporte de Stands.txt";
         FileWriter fileWriter = new FileWriter(nombreArchivo);
         try (BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
@@ -146,7 +149,7 @@ public class Feria implements Serializable{
             }   String valorPromedio = String.valueOf(valorPromedioStands());
             bufferedWriter.write("Valor promedio de los stands: " + valorPromedio + "\n");
         }
-    }
+    }*/
    
     public Map<String, Integer> reporteAccesorios() {
         Map<String, Integer> AccOrdenada = new TreeMap<>();
@@ -176,6 +179,7 @@ public class Feria implements Serializable{
     
     private static Feria recuperaSerializado() {
 		try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("Feria.ser"))) {
+                    System.out.println("VOY A RETORNAR UNA FERIA");
                     return (Feria) in.readObject();
 		} catch (FileNotFoundException e) {
 			System.out.println("Archivo no encontrado: " + e.getMessage());
@@ -184,6 +188,7 @@ public class Feria implements Serializable{
 		} catch (IOException e) {
 			System.out.println("Error de E/S: " + e.getMessage());
 		}
+                System.out.println("VOY A RETORNAR NULL");
 		return null;
     }
 
@@ -213,7 +218,18 @@ public class Feria implements Serializable{
     
     //prueba
     public void agregarStandNuevo(){
+        
+        Cliente clienteNuevo=new Cliente();
+        
+        
         Stand standNuevo=new StandExterior("ID NUEVO",500,200,null,null);
+        ArrayList<Accesorio> listaAccesoriosArrayList = new ArrayList<>(listaAccesorios);
+        standNuevo.setListaAccesorios(listaAccesoriosArrayList);
+        standNuevo.setUnCliente(clienteNuevo);
         listaStands.add(standNuevo);
     }
+    
+    
+
+
 }

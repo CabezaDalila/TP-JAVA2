@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 
-public class StandInterior extends Stand implements Serializable{
+public class StandInterior extends Stand /*implements Serializable*/{
     private static final long serialVersionUID = 1L;
 
     private int cantLuminarias;

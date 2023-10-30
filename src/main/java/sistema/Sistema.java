@@ -21,24 +21,24 @@ public class Sistema {
         //prueba para mostrar los stands y clientes por consola
 
   
-        feria=Feria.getInstance();
+        //feria=Feria.getInstance();
 
-        List<Stand> listaStandsFeria = feria.getListaStands();
+        /*List<Stand> listaStandsFeria = feria.getListaStands();
         System.out.println("LISTA ORDENADA:");
         for (Stand stand : listaStandsFeria) {
             System.out.println(stand.toString());  
-        }
+        }*/
         
         /*Set<Cliente> listaClientesFeria= feria.getListaClientes();
         for(Cliente cliente : listaClientesFeria){
             System.out.println(cliente.toString());
         }*/
-        Map<String, Integer> listaAcc = feria.reporteAccesorios();
+       /* Map<String, Integer> listaAcc = feria.reporteAccesorios();
         for (Map.Entry<String, Integer> entry : listaAcc.entrySet()) {
             String clave = entry.getKey();
             Integer valor = entry.getValue();
             System.out.println("Clave: " + clave + ", Valor: " + valor);
-        }
+        }*/
        
         //fin prueba
         
