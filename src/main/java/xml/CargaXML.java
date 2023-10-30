@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package xml;
+
 import java.io.File;
 import java.util.ArrayList;
 import javax.xml.parsers.DocumentBuilder;
@@ -17,9 +18,9 @@ public class CargaXML {
 
     public CargaXML() {
     }
-    
-    public boolean cargarStandsXML(Feria feria){
-        try{
+
+    public boolean cargarStandsXML(Feria feria) {
+        try {
             File archivoXML = new File("src/main/java/xml/Stands.xml");
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -40,7 +41,7 @@ public class CargaXML {
                     float precioM2 = Float.parseFloat(elementoStand.getElementsByTagName("precioM2").item(0).getTextContent());
                     String idClienteStand = elementoStand.getElementsByTagName("idCliente").item(0).getTextContent();
                     String descCliente = elementoStand.getElementsByTagName("descCliente").item(0).getTextContent();
-                    
+
                     ArrayList<Accesorio> listaAccesorios = new ArrayList<>();
                     NodeList listaAccesoriosXML = elementoStand.getElementsByTagName("accesorio");
                     for (int j = 0; j < listaAccesoriosXML.getLength(); j++) {
@@ -57,12 +58,12 @@ public class CargaXML {
                             feria.agregarAccesorio(accesorio);
                         }
                     }
-                    Cliente cliente = new Cliente(idClienteStand,descCliente);
+                    Cliente cliente = new Cliente(idClienteStand, descCliente);
                     feria.agregaCliente(cliente);
-                  
-                    if(elementoStandInterior != null){
+
+                    if (elementoStandInterior != null) {
                         int cantLuminarias = Integer.parseInt(elementoStandInterior.getElementsByTagName("cantLuminarias").item(0).getTextContent());
-                        StandInterior standInterior = new StandInterior(cantLuminarias,idStand, superficie, precioM2, cliente,listaAccesorios);
+                        StandInterior standInterior = new StandInterior(cantLuminarias, idStand, superficie, precioM2, cliente, listaAccesorios);
                         feria.agregaStand(standInterior);
                     } else {
                         StandExterior standExterior = new StandExterior(idStand, superficie, precioM2, cliente, listaAccesorios);
@@ -76,5 +77,5 @@ public class CargaXML {
             return false;
         }
     }
-    
+
 }

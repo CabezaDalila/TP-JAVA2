@@ -1,19 +1,14 @@
-
 package Model;
-
-import java.io.Serializable;
 import java.util.ArrayList;
 
+public class StandInterior extends Stand {
 
-public class StandInterior extends Stand{
     private static final long serialVersionUID = 1L;
 
     private int cantLuminarias;
-    
-    
+
     public StandInterior() {
     }
-
 
     public StandInterior(int cantLuminarias, String idStand, int superficie, float precioM2, Cliente unCliente, ArrayList<Accesorio> listaAccesorios) {
         super(idStand, superficie, precioM2, unCliente, listaAccesorios);
@@ -27,10 +22,12 @@ public class StandInterior extends Stand{
     public void setCantLuminarias(int cantLuminarias) {
         this.cantLuminarias = cantLuminarias;
     }
-    public float  valorTotalStand(){
-        float total=sumaPrecioAccesorios() + getPrecio()*getSuperficie() + 1000*cantLuminarias;
+
+    @Override
+    public float valorTotalStand() {
+        float total = sumaPrecioAccesorios() + super.valorTotalStand() + 1000 * cantLuminarias;
         return total;
-        
+
     }
 
 }

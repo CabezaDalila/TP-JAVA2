@@ -3,8 +3,6 @@ package vista;
 import Model.*;
 import java.io.IOException;
 import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
 
@@ -13,8 +11,9 @@ import javax.swing.JOptionPane;
  * @author dalilacabeza
  */
 public class Reportes extends javax.swing.JFrame {
+
     private static Feria feria;
-   
+
     /**
      * Creates new form Reportes
      */
@@ -162,7 +161,7 @@ public class Reportes extends javax.swing.JFrame {
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, "El archivo NO fue generado", "Error", JOptionPane.ERROR_MESSAGE);
         }
-       
+
     }//GEN-LAST:event_jBtnDescargarAccActionPerformed
 
     private void jBtnDescargarStandsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnDescargarStandsActionPerformed
@@ -173,74 +172,73 @@ public class Reportes extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "El archivo NO fue generado", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jBtnDescargarStandsActionPerformed
-    
+
     private void cargarTablaStand() {
         //para que las filas y columnas no se puedan editar
-        DefaultTableModel modeloTabla=new DefaultTableModel(){
-            
+        DefaultTableModel modeloTabla = new DefaultTableModel() {
+
             @Override
-            public boolean isCellEditable(int row,int colum){
+            public boolean isCellEditable(int row, int colum) {
                 return false;
             }
-            
+
         };
-  
-        String titulos[]={"ID","Valor","Superficie","Precio M2","Cliente","Accesorios"};
+
+        String titulos[] = {"ID", "Valor", "Superficie", "Precio M2", "Cliente", "Accesorios"};
         modeloTabla.setColumnIdentifiers(titulos);
-        
+
         TablaReporteStands.setModel(modeloTabla);
-        
-        List<Stand> listaStands= feria.ordenaStandDescendentePorValor();
-         
+
+        List<Stand> listaStands = feria.ordenaStandDescendentePorValor();
+
         //setear los datos en la tabla
-        if(listaStands!=null){
-            for(Stand stand:listaStands){
-                StringBuilder descripcionAccesorios=stand.devuelveAccesorios();
-                Object objeto[]={stand.getIdStand(),stand.valorTotalStand(),stand.getSuperficie(),stand.getPrecio(),stand.getUnCliente().getIdCliente(),descripcionAccesorios};
+        if (listaStands != null) {
+            for (Stand stand : listaStands) {
+                StringBuilder descripcionAccesorios = stand.devuelveAccesorios();
+                Object objeto[] = {stand.getIdStand(), stand.valorTotalStand(), stand.getSuperficie(), stand.getPrecio(), stand.getUnCliente().getIdCliente(), descripcionAccesorios};
                 modeloTabla.addRow(objeto);
             }
         }
-        
+
         TablaReporteStands.setModel(modeloTabla);
-        
+
     }
-     //CATA
-      private void cargarTablaAcc() {
+    //CATA
+
+    private void cargarTablaAcc() {
         //para que las filas y columnas no se puedan editar
-        DefaultTableModel modeloTabla=new DefaultTableModel(){
-            
+        DefaultTableModel modeloTabla = new DefaultTableModel() {
+
             @Override
-            public boolean isCellEditable(int row,int colum){
+            public boolean isCellEditable(int row, int colum) {
                 return false;
             }
-            
+
         };
         //CAMBIAR TITULOS POR LAS VARIABLES QUE TENGA ACC O LAS QUE TENGAS QUE MOSTRAR 
-        String titulos[]={"ID","Descripcion","Precio","Cant de usos"};
+        String titulos[] = {"ID", "Descripcion", "Precio", "Cant de usos"};
         modeloTabla.setColumnIdentifiers(titulos);
-        
+
         TablaReporteAccesorios.setModel(modeloTabla);
-        
-        Map<String,Integer> listaUsos= feria.reporteAccesorios();
-        Set <Accesorio> listaAcc = feria.getListaAccesorios();
-        
+
+        Map<String, Integer> listaUsos = feria.reporteAccesorios();
+        Set<Accesorio> listaAcc = feria.getListaAccesorios();
 
         for (Map.Entry<String, Integer> entry : listaUsos.entrySet()) {
-           Integer valor = entry.getValue();
-           String clave = entry.getKey();
-           Accesorio accesorio = feria.buscarAccesorioPorDescripcion(clave);
-          
-           if (accesorio != null){
-                Object objeto[]={accesorio.getIdAccesorio(),accesorio.getDescAccesorio(),accesorio.getPrecioAlquiler(),valor};
+            Integer valor = entry.getValue();
+            String clave = entry.getKey();
+            Accesorio accesorio = feria.buscarAccesorioPorDescripcion(clave);
+
+            if (accesorio != null) {
+                Object objeto[] = {accesorio.getIdAccesorio(), accesorio.getDescAccesorio(), accesorio.getPrecioAlquiler(), valor};
                 //System.out.println("REPORTE: "+accesorio.toString());
                 modeloTabla.addRow(objeto);
-           }
-         
-       }
-        
-      
+            }
+
+        }
+
         TablaReporteAccesorios.setModel(modeloTabla);
-        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

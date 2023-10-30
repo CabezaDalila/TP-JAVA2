@@ -1,10 +1,9 @@
-
 package Model;
 
 import java.io.Serializable;
 
+public class Accesorio implements Comparable<Accesorio>, Serializable {
 
-public class Accesorio implements Comparable<Accesorio>,Serializable{
     private static final long serialVersionUID = 1L;
     private String idAccesorio;
     private String descAccesorio;
@@ -22,16 +21,16 @@ public class Accesorio implements Comparable<Accesorio>,Serializable{
     public String getIdAccesorio() {
         return idAccesorio;
     }
-            
+
     public void setIdAccesorio(String idAccesorio) {
         this.idAccesorio = idAccesorio;
     }
 
     @Override
     public int compareTo(Accesorio otroAccesorio) {
-       return this.idAccesorio.compareTo(otroAccesorio.idAccesorio);
+        return this.idAccesorio.compareTo(otroAccesorio.idAccesorio);
     }
-    
+
     public String getDescAccesorio() {
         return descAccesorio;
     }
@@ -47,20 +46,10 @@ public class Accesorio implements Comparable<Accesorio>,Serializable{
     public void setPrecioAlquiler(double precioAlquiler) {
         this.precioAlquiler = precioAlquiler;
     }
-    
-   /* public void muestraListaAccesorios(){
-        for(Accesorio miAccesorio: listaAccesorios){
-            System.out.println("ID Accesorio: "+miAccesorio.getIdAccesorio());
-        }
-    }*/
 
     @Override
     public String toString() {
         return "Accesorio{" + "idAccesorio=" + idAccesorio + ", descAccesorio=" + descAccesorio + ", precioAlquiler=" + precioAlquiler + '}';
     }
 
-    int compare(Accesorio acc2) {
-        throw new UnsupportedOperationException("Not supported yet."); 
-    }
-    
 }

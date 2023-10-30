@@ -1,28 +1,22 @@
-
 package vista;
 
-import Model.Accesorio;
 import Model.Cliente;
 import Model.Stand;
-import java.awt.BorderLayout;
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
-
 public class VerDatosCliente extends javax.swing.JFrame {
+
     private Cliente cliente;
 
     public VerDatosCliente(Cliente cliente) {
-        this.cliente=cliente;
+        this.cliente = cliente;
         initComponents();
-        datosCte.setText("<html>Datos de los Stands del cliente: <br>"+cliente.getDescCliente()+", con ID: "+cliente.getIdCliente()+ "</html>");
+        datosCte.setText("<html>Datos de los Stands del cliente: <br>" + cliente.getDescCliente() + ", con ID: " + cliente.getIdCliente() + "</html>");
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        
+
     }
 
-
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -84,7 +78,6 @@ public class VerDatosCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel datosCte;
     private javax.swing.JPanel jPanel1;
@@ -94,40 +87,37 @@ public class VerDatosCliente extends javax.swing.JFrame {
 
     private void cargarTabla() {
         //para que las filas y columnas no se puedan editar
-        DefaultTableModel modeloTabla=new DefaultTableModel(){
-            
+        DefaultTableModel modeloTabla = new DefaultTableModel() {
+
             @Override
-            public boolean isCellEditable(int row,int colum){
+            public boolean isCellEditable(int row, int colum) {
                 return false;
             }
-            
+
         };
-        
+
         //poner titulos a las columnas
-        String titulos[]={"ID","Superficie","Precio M2","Accesorios"};
+        String titulos[] = {"ID", "Superficie", "Precio M2", "Accesorios"};
         modeloTabla.setColumnIdentifiers(titulos);
-        
+
         tablaStands.setModel(modeloTabla);
-        
+
         //traer stands que tiene el cliente
-        
-        List<Stand> listaStands= cliente.getListaStands();
-        
-        
-         
+        List<Stand> listaStands = cliente.getListaStands();
+
         //setear los datos en la tabla
-        if(listaStands!=null){
-            for(Stand stand:listaStands){
-                
-                StringBuilder descripcionAccesorios=stand.devuelveAccesorios();
-                
-                Object objeto[]={stand.getIdStand(),stand.getSuperficie(),stand.getPrecio(),descripcionAccesorios};
+        if (listaStands != null) {
+            for (Stand stand : listaStands) {
+
+                StringBuilder descripcionAccesorios = stand.devuelveAccesorios();
+
+                Object objeto[] = {stand.getIdStand(), stand.getSuperficie(), stand.getPrecio(), descripcionAccesorios};
 
                 modeloTabla.addRow(objeto);
             }
         }
-        
+
         tablaStands.setModel(modeloTabla);
-        
+
     }
 }

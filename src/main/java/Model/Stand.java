@@ -2,23 +2,21 @@ package Model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
+public abstract class Stand implements Comparable<Stand>, Serializable {
 
-public abstract class Stand implements Comparable<Stand>, Serializable{
     private static final long serialVersionUID = 1L;
     private String idStand;
     private int superficie;
     private float precioM2;
     private Cliente cliente;
-    private ArrayList<Accesorio>listaAccesorios;
-    
+    private ArrayList<Accesorio> listaAccesorios;
+
     @Override
-    public int compareTo(Stand o){
+    public int compareTo(Stand o) {
         return this.idStand.compareTo(o.idStand);
     }
-    
 
     public Stand() {
     }
@@ -92,44 +90,45 @@ public abstract class Stand implements Comparable<Stand>, Serializable{
     public void setListaAccesorios(ArrayList<Accesorio> listaAccesorios) {
         this.listaAccesorios = listaAccesorios;
     }
-    
-    public void agregaAccesorio(Accesorio accesorio){
+
+    public void agregaAccesorio(Accesorio accesorio) {
         listaAccesorios.add(accesorio);
     }
-    public abstract float  valorTotalStand();//podria ser no abs y sup*precio podria eesatr aca, no es obligacion q sea abs para q sea polimorfo
-    
+
+    public float valorTotalStand(){
+        return precioM2 * superficie;
+    }
+
     @Override
     public String toString() {
-        return "Stand{" + "idStand=" + idStand +", Valor Stand="+valorTotalStand() + ", superficie=" + superficie + ", precioM2=" + precioM2 + ", unCliente=" + cliente.getIdCliente() + ", listaAccesorios=" + listaAccesorios.toString() + '}';
+        return "Stand{" + "idStand=" + idStand + ", Valor Stand=" + valorTotalStand() + ", superficie=" + superficie + ", precioM2=" + precioM2 + ", unCliente=" + cliente.getIdCliente() + ", listaAccesorios=" + listaAccesorios.toString() + '}';
     }
-    public float sumaPrecioAccesorios(){
-        float total=0;
-        for(Accesorio ac : listaAccesorios){
-            total+=ac.getPrecioAlquiler();
+
+    public float sumaPrecioAccesorios() {
+        float total = 0;
+        for (Accesorio ac : listaAccesorios) {
+            total += ac.getPrecioAlquiler();
         }
         return total;
     }
-    
-    public int tamanioLista(){
+
+    public int tamanioLista() {
         return listaAccesorios.size();
     }
-    
-    public StringBuilder devuelveAccesorios(){
-        ArrayList<Accesorio> lista=listaAccesorios;
-                StringBuilder descripcionAccesorios = new StringBuilder();
-                
-                for(Accesorio accesorio:lista){
-                    descripcionAccesorios.append(accesorio.getDescAccesorio()).append(", ");
-                }
-                
-                // Eliminar la coma y el espacio del final
-                if(descripcionAccesorios.length()>0){
-                    descripcionAccesorios.deleteCharAt(descripcionAccesorios.length()-2);
-                }
+
+    public StringBuilder devuelveAccesorios() {
+        ArrayList<Accesorio> lista = listaAccesorios;
+        StringBuilder descripcionAccesorios = new StringBuilder();
+
+        for (Accesorio accesorio : lista) {
+            descripcionAccesorios.append(accesorio.getDescAccesorio()).append(", ");
+        }
+
+        // Eliminar la coma y el espacio del final
+        if (descripcionAccesorios.length() > 0) {
+            descripcionAccesorios.deleteCharAt(descripcionAccesorios.length() - 2);
+        }
         return descripcionAccesorios;
     }
-   
 
 }
-    
-

@@ -1,12 +1,11 @@
-
 package Model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
 
+public class Cliente implements Comparable<Cliente>, Serializable {
 
-public class Cliente implements Comparable<Cliente>,Serializable{
     private static final long serialVersionUID = 1L;
     private String idCliente;
     private String descCliente;
@@ -20,9 +19,10 @@ public class Cliente implements Comparable<Cliente>,Serializable{
         this.descCliente = descCliente;
     }
 
-    public int compareTo(Cliente otroCliente){
+    @Override
+    public int compareTo(Cliente otroCliente) {
         return this.idCliente.compareTo(otroCliente.idCliente);
-}
+    }
 
     public Cliente(String idCliente, String descCliente, ArrayList<Stand> listaStands) {
         this.idCliente = idCliente;
@@ -30,7 +30,6 @@ public class Cliente implements Comparable<Cliente>,Serializable{
         this.listaStands = listaStands;
     }
 
-    
     public String getIdCliente() {
         return idCliente;
     }
@@ -81,13 +80,12 @@ public class Cliente implements Comparable<Cliente>,Serializable{
     public String toString() {
         return "Cliente{" + "idCliente=" + idCliente + ", descCliente=" + descCliente + ", listaStands=" + listaStands + '}';
     }
-    
+
     void agregaStands(ArrayList<Stand> nuevaLista) {
-      if (listaStands == null) {
-        listaStands = new ArrayList<>();
-      }
-       listaStands.addAll(nuevaLista);
+        if (listaStands == null) {
+            listaStands = new ArrayList<>();
+        }
+        listaStands.addAll(nuevaLista);
     }
-    
 
 }
