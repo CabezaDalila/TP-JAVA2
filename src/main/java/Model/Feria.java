@@ -227,7 +227,6 @@ public class Feria implements Serializable{
         listaStands.add(standNuevo);
     }
     
- 
 
     public void generaTxtReporteAccesorios() throws IOException{
         String Archivo = "Reporte de Accesorios.txt";
