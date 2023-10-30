@@ -38,17 +38,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 			}
                  });
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
     }
 
 

@@ -45,6 +45,7 @@ public class Feria implements Serializable{
        }
        return feria;
    }
+   
     public Cliente buscaClientePorId(String idCliente) throws ClienteNoEncontrado{
          for (Cliente cliente : listaClientes) {
             if (cliente.getIdCliente().equals(idCliente)) {
