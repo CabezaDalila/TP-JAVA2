@@ -231,7 +231,6 @@ public class Reportes extends javax.swing.JFrame {
 
             if (accesorio != null) {
                 Object objeto[] = {accesorio.getIdAccesorio(), accesorio.getDescAccesorio(), accesorio.getPrecioAlquiler(), valor};
-                //System.out.println("REPORTE: "+accesorio.toString());
                 modeloTabla.addRow(objeto);
             }
 

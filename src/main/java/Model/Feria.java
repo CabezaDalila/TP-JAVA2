@@ -23,7 +23,7 @@ public class Feria implements Serializable {
     private String nombreFeria;
 
     private Set<Cliente> listaClientes;
-    private /*static*/ List<Stand> listaStands;
+    private List<Stand> listaStands;
     private Set<Accesorio> listaAccesorios;
 
     private Feria(Set<Cliente> listaClientes, Set<Stand> listaStands, Set<Accesorio> listaAccesorios) {
@@ -92,17 +92,9 @@ public class Feria implements Serializable {
                     nuevaLista.add(stand);
                 }
             }
-            //System.out.println("tamanio de la lista nueva:  "+nuevaLista.size()); 
             cliente.agregaStands(nuevaLista);
             nuevaLista.clear();
         }
-
-        // 
-        //System.out.println("Termino la funcion agregaStand a cliente"); 
-        //System.out.println("Cant stands en cte:"); 
-        /*for(Cliente cliente:listaClientes){
-            System.out.println("DATOS "+cliente.toString()); 
-        }*/
     }
 
     //Recorrido con stream

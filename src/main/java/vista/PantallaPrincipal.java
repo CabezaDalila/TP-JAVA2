@@ -16,8 +16,6 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         initComponents();
         this.feria = Feria.getInstance();
 
-        System.out.println("TAMANIO DE LA LISTA DE STANDS: " + feria.getListaStands().size());
-
         File datos = new File("Feria.ser");
         if (!datos.exists()) {
             String nombrePerfil = JOptionPane.showInputDialog(null, "Ingrese el nombre del Perfil", "Nombre del Perfil",
