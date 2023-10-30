@@ -160,17 +160,17 @@ public class Reportes extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnDescargarAccActionPerformed
 
     private void jBtnDescargarStandsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnDescargarStandsActionPerformed
-       /* try {
+        try {
             feria.generaTxtReporteStands();
             JOptionPane.showMessageDialog(null, "El archivo TXT fue generado con éxito");
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, "El archivo NO fue generado", "Error", JOptionPane.ERROR_MESSAGE);
-        }*/
+        }
     }//GEN-LAST:event_jBtnDescargarStandsActionPerformed
     
     private void cargarTablaStand() {
         //para que las filas y columnas no se puedan editar
-        /*DefaultTableModel modeloTabla=new DefaultTableModel(){
+        DefaultTableModel modeloTabla=new DefaultTableModel(){
             
             @Override
             public boolean isCellEditable(int row,int colum){
@@ -196,7 +196,7 @@ public class Reportes extends javax.swing.JFrame {
         }
         
         TablaReporteStands.setModel(modeloTabla);
-        */
+        
     }
      //CATA
       private void cargarTablaAcc() {

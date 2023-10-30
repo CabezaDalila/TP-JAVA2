@@ -87,10 +87,7 @@ public class Cliente implements Comparable<Cliente>,Serializable{
         listaStands = new ArrayList<>();
       }
        listaStands.addAll(nuevaLista);
-        System.out.println("tamanio lista de stands de la clase cliente: "+listaStands.size()); 
-         
     }
     
-    
-  
+
 }

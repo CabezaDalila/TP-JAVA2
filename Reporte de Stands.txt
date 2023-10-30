@@ -1,4 +1,13 @@
 Listado completo de stands ordenados descendentemente por su valor total:
+Id Stand: ID NUEVO Valor del Stand: 90265.5 Superficie: 500 Precio metro2: 200.0
+Listado de acceosrios:
+ACS01
+ACS02
+ACS03
+ACS04
+ACS05
+ACS07
+ACS10
 Id Stand: STD05 Valor del Stand: 2765.0 Superficie: 38 Precio metro2: 70.0
 Listado de acceosrios:
 ACS01
@@ -29,4 +38,4 @@ Listado de acceosrios:
 ACS05
 ACS01
 ACS03
-Valor promedio de los stands: 188.57143
+Valor promedio de los stands: 11283.1875

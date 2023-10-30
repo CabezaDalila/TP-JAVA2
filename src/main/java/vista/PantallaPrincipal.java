@@ -20,25 +20,25 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         System.out.println("TAMANIO DE LA LISTA DE STANDS: "+feria.getListaStands().size());
         
         File datos = new File("Feria.ser");
-		if (!datos.exists()) {
-			String nombrePerfil = JOptionPane.showInputDialog(null, "Ingrese el nombre del Perfil", "Nombre del Perfil",
-					JOptionPane.PLAIN_MESSAGE);
-			if (nombrePerfil == null || nombrePerfil.isEmpty())
-				System.exit(0);
-			else
-				feria.setNombreFeria(nombrePerfil);
-		}
-		setTitle("Perfil del usuario " + feria.getNombreFeria());
-		addWindowListener(new WindowAdapter() {
-			@Override
-			public void windowClosing(WindowEvent e) {
-				int confirma = JOptionPane.showConfirmDialog(null, "¿Desea guardar los cambios?", "Guardar cambios",
-						JOptionPane.YES_NO_OPTION);
-				if (confirma == JOptionPane.YES_OPTION) {
-					feria.serializar();
-				}
-			}
-                 });
+            if (!datos.exists()) {
+		String nombrePerfil = JOptionPane.showInputDialog(null, "Ingrese el nombre del Perfil", "Nombre del Perfil",
+	JOptionPane.PLAIN_MESSAGE);
+                if (nombrePerfil == null || nombrePerfil.isEmpty())
+                    System.exit(0);
+                else
+            feria.setNombreFeria(nombrePerfil);
+            }
+            setTitle("Perfil del usuario " + feria.getNombreFeria());
+            addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                int confirma = JOptionPane.showConfirmDialog(null, "¿Desea guardar los cambios?", "Guardar cambios",
+            JOptionPane.YES_NO_OPTION);
+                if (confirma == JOptionPane.YES_OPTION) {
+                    feria.serializar();
+                }
+                }
+            });
         
 
     }
