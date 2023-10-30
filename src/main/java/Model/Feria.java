@@ -230,7 +230,7 @@ public class Feria implements Serializable{
     
 
 
-}
+
 
     public void generaTxtReporteAccesorios() throws IOException{
         String Archivo = "Reporte de Accesorios.txt";
