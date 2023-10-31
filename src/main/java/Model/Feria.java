@@ -2,13 +2,10 @@ package Model;
 
 import java.util.*;
 import Excepciones.ClienteNoEncontrado;
-import xml.*;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.NotSerializableException;
 import java.io.ObjectInputStream;
@@ -35,7 +32,7 @@ public class Feria implements Serializable {
     //Singleton
     public static Feria getInstance() {
         if (feria == null) {
-            Feria feriaSerializado = feria.recuperaSerializado();
+            Feria feriaSerializado = recuperaSerializado();
             if (feriaSerializado == null) {
                 feria = new Feria(new HashSet<>(), new HashSet<>(), new TreeSet<>());
             } else {
@@ -97,6 +94,11 @@ public class Feria implements Serializable {
         }
     }
 
+    /**
+     *
+     * @param descripcion
+     * @return
+     */
     public Accesorio buscarAccesorioPorDescripcion(String descripcion) {
         for (Accesorio acc : listaAccesorios) {
             if (acc.getDescAccesorio().equalsIgnoreCase(descripcion)) {

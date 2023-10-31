@@ -2,27 +2,21 @@ Listado de accesorios ordenado alfabeticamente por su descripcion:
 Descripcion Accesorio: ALTAVOCES
 Cantidad de usos: 1
 Precio: 55.0
-
 Descripcion Accesorio: ESTANTE
 Cantidad de usos: 2
 Precio: 25.0
-
 Descripcion Accesorio: LUCES
 Cantidad de usos: 3
 Precio: 40.0
-
 Descripcion Accesorio: MESA
 Cantidad de usos: 1
 Precio: 30.0
-
 Descripcion Accesorio: NOTEBOOK
 Cantidad de usos: 1
 Precio: 80.0
-
 Descripcion Accesorio: SILLA
 Cantidad de usos: 5
 Precio: 15.0
-
 Descripcion Accesorio: TV
 Cantidad de usos: 3
 Precio: 50.0
