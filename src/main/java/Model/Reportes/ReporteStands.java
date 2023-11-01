@@ -33,7 +33,7 @@ public class ReporteStands {
         Iterator<Stand> it = feria.getListaStands().iterator();
         while (it.hasNext()) {
             Stand stand = it.next();
-            suma = +stand.valorTotalStand();
+            suma += stand.valorTotalStand();
             cont++;
         }
         return cont > 0 ? suma / cont : 0;
