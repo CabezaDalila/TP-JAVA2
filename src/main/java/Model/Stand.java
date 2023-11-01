@@ -5,13 +5,9 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 /**
- * La clase `Stand` representa un stand en una feria. Contiene información sobre
- * el stand, como su identificación, superficie, precio por metro cuadrado, cliente
- * asociado y una lista de accesorios. Esta es una clase abstracta que debe ser
- * extendida por clases concretas que definen el tipo de stand.
+ * La clase abstracta `Stand` representa un stand en una feria. Los stands pueden ser de tipo StandInterior o StandExterior, y comparten atributos como el ID, superficie, precio por metro cuadrado (M2), cliente y una lista de accesorios.
  */
 public abstract class Stand implements Comparable<Stand>, Serializable {
-
     private static final long serialVersionUID = 1L;
     private String idStand;
     private int superficie;
@@ -20,11 +16,9 @@ public abstract class Stand implements Comparable<Stand>, Serializable {
     private ArrayList<Accesorio> listaAccesorios;
 
     /**
-     * Compara este stand con otro en función de su identificación.
-     *
+     * Compara dos stands según su ID para ordenarlos.
      * @param o El stand a comparar.
-     * @return Un valor negativo si este stand es menor que el stand pasado,
-     *         un valor positivo si es mayor o 0 si son iguales.
+     * @return Un valor negativo, cero o positivo si este stand es menor, igual o mayor que el stand proporcionado, respectivamente.
      */
     @Override
     public int compareTo(Stand o) {
@@ -32,19 +26,18 @@ public abstract class Stand implements Comparable<Stand>, Serializable {
     }
 
     /**
-     * Constructor vacío de la clase `Stand`. Inicializa todas las propiedades a sus valores predeterminados.
+     * Constructor por defecto de la clase `Stand`.
      */
     public Stand() {
     }
 
     /**
-     * Constructor de la clase `Stand` que inicializa todas sus propiedades.
-     *
-     * @param idStand         La identificación del stand.
-     * @param superficie      La superficie del stand.
-     * @param precioM2        El precio por metro cuadrado.
-     * @param cliente         El cliente asociado al stand.
-     * @param listaAccesorios La lista de accesorios del stand.
+     * Constructor que crea un stand con información específica.
+     * @param idStand El ID del stand.
+     * @param superficie La superficie del stand.
+     * @param precioM2 El precio por metro cuadrado.
+     * @param cliente El cliente que alquila el stand.
+     * @param listaAccesorios Una lista de accesorios asociados al stand.
      */
     public Stand(String idStand, int superficie, float precioM2, Cliente cliente, ArrayList<Accesorio> listaAccesorios) {
         this.idStand = idStand;
@@ -55,26 +48,31 @@ public abstract class Stand implements Comparable<Stand>, Serializable {
     }
 
     /**
-     * Devuelve la identificación del stand.
-     *
-     * @return La identificación del stand.
+     * Calcula y devuelve el valor total del stand basado en la superficie y el precio por metro cuadrado.
+     * @return El valor total del stand.
+     */
+    public float valorTotalStand() {
+        return precioM2 * superficie;
+    }
+
+    /**
+     * Obtiene el ID del stand.
+     * @return El ID del stand.
      */
     public String getIdStand() {
         return idStand;
     }
 
     /**
-     * Establece la identificación del stand.
-     *
-     * @param idStand La identificación del stand.
+     * Establece el ID del stand.
+     * @param idStand El nuevo ID del stand.
      */
     public void setIdStand(String idStand) {
         this.idStand = idStand;
     }
 
     /**
-     * Devuelve la superficie del stand.
-     *
+     * Obtiene la superficie del stand.
      * @return La superficie del stand.
      */
     public int getSuperficie() {
@@ -83,16 +81,14 @@ public abstract class Stand implements Comparable<Stand>, Serializable {
 
     /**
      * Establece la superficie del stand.
-     *
-     * @param superficie La superficie del stand.
+     * @param superficie La nueva superficie del stand.
      */
     public void setSuperficie(int superficie) {
         this.superficie = superficie;
     }
 
     /**
-     * Devuelve el precio por metro cuadrado del stand.
-     *
+     * Obtiene el precio por metro cuadrado del stand.
      * @return El precio por metro cuadrado del stand.
      */
     public float getPrecio() {
@@ -101,34 +97,30 @@ public abstract class Stand implements Comparable<Stand>, Serializable {
 
     /**
      * Establece el precio por metro cuadrado del stand.
-     *
-     * @param precio El precio por metro cuadrado del stand.
+     * @param precio El nuevo precio por metro cuadrado.
      */
     public void setPrecio(float precio) {
         this.precioM2 = precio;
     }
 
     /**
-     * Devuelve el cliente asociado al stand.
-     *
-     * @return El cliente asociado al stand.
+     * Obtiene el cliente que alquila el stand.
+     * @return El cliente que alquila el stand.
      */
     public Cliente getUnCliente() {
         return cliente;
     }
 
     /**
-     * Establece el cliente asociado al stand.
-     *
-     * @param unCliente El cliente asociado al stand.
+     * Establece el cliente que alquila el stand.
+     * @param unCliente El nuevo cliente que alquila el stand.
      */
     public void setUnCliente(Cliente unCliente) {
         this.cliente = unCliente;
     }
 
     /**
-     * Devuelve la lista de accesorios del stand.
-     *
+     * Obtiene la lista de accesorios asociados al stand.
      * @return La lista de accesorios del stand.
      */
     public ArrayList<Accesorio> getListaAccesorios() {
@@ -136,9 +128,8 @@ public abstract class Stand implements Comparable<Stand>, Serializable {
     }
 
     /**
-     * Establece la lista de accesorios del stand.
-     *
-     * @param listaAccesorios La lista de accesorios del stand.
+     * Establece la lista de accesorios asociados al stand.
+     * @param listaAccesorios La nueva lista de accesorios.
      */
     public void setListaAccesorios(ArrayList<Accesorio> listaAccesorios) {
         this.listaAccesorios = listaAccesorios;
@@ -146,7 +137,6 @@ public abstract class Stand implements Comparable<Stand>, Serializable {
 
     /**
      * Agrega un accesorio a la lista de accesorios del stand.
-     *
      * @param accesorio El accesorio a agregar.
      */
     public void agregaAccesorio(Accesorio accesorio) {
@@ -154,36 +144,8 @@ public abstract class Stand implements Comparable<Stand>, Serializable {
     }
 
     /**
-     * Calcula el valor total del stand multiplicando la superficie por el precio por metro cuadrado.
-     *
-     * @return El valor total del stand.
-     */
-    public float valorTotalStand() {
-        return precioM2 * superficie;
-    }
-
-    /**
-     * Devuelve una representación en cadena del stand que incluye su identificación, valor total, superficie,
-     * precio por metro cuadrado, cliente asociado y lista de accesorios.
-     *
-     * @return Una representación en cadena del stand.
-     */
-    @Override
-    public String toString() {
-        return "Stand{" +
-                "idStand='" + idStand + '\'' +
-                ", Valor Stand=" + valorTotalStand() +
-                ", superficie=" + superficie +
-                ", precioM2=" + precioM2 +
-                ", unCliente=" + cliente.getIdCliente() +
-                ", listaAccesorios=" + listaAccesorios.toString() +
-                '}';
-    }
-
-    /**
-     * Calcula la suma total de precios de los accesorios en la lista de accesorios del stand.
-     *
-     * @return La suma total de precios de los accesorios.
+     * Calcula la suma total de precios de los accesorios asociados al stand.
+     * @return La suma total de precios de accesorios.
      */
     public float sumaPrecioAccesorios() {
         float total = 0;
@@ -194,18 +156,16 @@ public abstract class Stand implements Comparable<Stand>, Serializable {
     }
 
     /**
-     * Devuelve el número de accesorios en la lista de accesorios del stand.
-     *
-     * @return El número de accesorios en la lista.
+     * Obtiene el número de accesorios en la lista del stand.
+     * @return El número de accesorios.
      */
     public int tamanioLista() {
         return listaAccesorios.size();
     }
 
     /**
-     * Devuelve una cadena que contiene las descripciones de los accesorios en la lista de accesorios del stand.
-     *
-     * @return Una cadena con las descripciones de los accesorios.
+     * Devuelve una cadena que representa la descripción de los accesorios asociados al stand.
+     * @return Una cadena con la descripción de los accesorios.
      */
     public StringBuilder devuelveAccesorios() {
         ArrayList<Accesorio> lista = listaAccesorios;
@@ -214,12 +174,48 @@ public abstract class Stand implements Comparable<Stand>, Serializable {
         for (Accesorio accesorio : lista) {
             descripcionAccesorios.append(accesorio.getDescAccesorio()).append(", ");
         }
-        
+
+        // Eliminar la coma y el espacio del final
         if (descripcionAccesorios.length() > 0) {
             descripcionAccesorios.deleteCharAt(descripcionAccesorios.length() - 2);
         }
         return descripcionAccesorios;
     }
 
+    /**
+     * Compara si dos stands son iguales basados en su ID.
+     * @param obj El objeto a comparar con el stand.
+     * @return `true` si son iguales, `false` en caso contrario.
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Stand other = (Stand) obj;
+        return Objects.equals(this.idStand, other.idStand);
+    }
 
+    /**
+     * Calcula el hash code del stand basado en su ID.
+     * @return El hash code del stand.
+     */
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 61 * hash + Objects.hashCode(this.idStand);
+        return hash;
+    }
+
+    /**
+     * Genera una representación de cadena del stand, incluyendo su ID, valor, superficie, precio por metro cuadrado, cliente y lista de accesorios.
+     * @return Una representación de cadena del stand.
+     */
+    @Override
+    public String toString() {
+        return "Stand{" + "idStand=" + idStand + ", Valor Stand=" + valorTotalStand() + ", superficie=" + superficie + ", precioM2=" + precioM2 + ", unCliente=" + cliente.getIdCliente() + ", listaAccesorios=" + listaAccesorios.toString() + '}';
+    }
 }
