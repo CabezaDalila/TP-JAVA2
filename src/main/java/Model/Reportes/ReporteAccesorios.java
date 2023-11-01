@@ -1,5 +1,6 @@
 package Model.Reportes;
 
+import Excepciones.ListaVacia;
 import Model.*;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -9,10 +10,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 
-/**
- *
- * @author dalilacabeza
- */
 public class ReporteAccesorios {
 
     private static Feria feria;
@@ -37,24 +34,25 @@ public class ReporteAccesorios {
         return AccOrdenada;
     }
 
-    public void generaTxtReporteAccesorios() throws IOException {
+    public void generaTxtReporteAccesorios() throws IOException, ListaVacia  {
         String Archivo = "Reporte de Accesorios.txt";
         FileWriter fileWriter = new FileWriter(Archivo);
-        try (BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
-            bufferedWriter.write("Listado de accesorios ordenado alfabeticamente por su descripcion:\n");
-            Map<String, Integer> accOrdenados = reporteAccesoriosOrdenAlfabetico();
-            Set<Accesorio> listaAcc = feria.getListaAccesorios();
-            for (Map.Entry<String, Integer> entry : accOrdenados.entrySet()) {
-                bufferedWriter.write("Descripcion Accesorio: " + entry.getKey() + "\n");
-                bufferedWriter.write("Cantidad de usos: " + entry.getValue() + "\n");
-                for (Accesorio acc : listaAcc) {
-                    if (acc.getDescAccesorio().toLowerCase().equals(entry.getKey().toLowerCase())) {
-                        bufferedWriter.write("Precio: " + acc.getPrecioAlquiler() + "\n");
-                        break;
-                    }
+        if(feria.getListaAccesorios()!= null){
+            try (BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
+                bufferedWriter.write("Listado de accesorios ordenado alfabeticamente por su descripcion:\n");
+                Map<String, Integer> accOrdenados = reporteAccesoriosOrdenAlfabetico();
+                Set<Accesorio> listaAcc = feria.getListaAccesorios();
+                for (Map.Entry<String, Integer> entry : accOrdenados.entrySet()) {
+                    bufferedWriter.write("Descripcion Accesorio: " + entry.getKey() + "\n");
+                    bufferedWriter.write("Cantidad de usos: " + entry.getValue() + "\n");
+                    Accesorio acc = feria.buscarAccesorioPorDescripcion(entry.getKey());
+                    bufferedWriter.write("Precio: " + acc.getPrecioAlquiler() + "\n");
+
                 }
-                bufferedWriter.write("\n");
+                    bufferedWriter.write("\n");
             }
         }
+        else
+            throw new ListaVacia("Error: Lista de accesorios vacia");
     }
 }

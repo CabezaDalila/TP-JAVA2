@@ -1,16 +1,16 @@
 package vista;
 
+import Excepciones.ListaVacia;
 import Model.*;
 import Model.Reportes.*;
 import java.io.IOException;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author dalilacabeza
- */
+
 public class Reportes extends javax.swing.JFrame {
 
     private static Feria feria;
@@ -163,6 +163,8 @@ public class Reportes extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "El archivo TXT fue generado con éxito");
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, "El archivo NO fue generado", "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (ListaVacia e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
 
     }//GEN-LAST:event_jBtnDescargarAccActionPerformed
@@ -173,6 +175,8 @@ public class Reportes extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "El archivo TXT fue generado con éxito");
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, "El archivo NO fue generado", "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (ListaVacia e) {
+            JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jBtnDescargarStandsActionPerformed
 
@@ -207,7 +211,7 @@ public class Reportes extends javax.swing.JFrame {
 
     }
 
-    private void cargarTablaAcc() {
+    private void cargarTablaAcc()  {
         //para que las filas y columnas no se puedan editar
         DefaultTableModel modeloTabla = new DefaultTableModel() {
 

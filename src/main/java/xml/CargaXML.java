@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package xml;
 
 import java.io.File;
@@ -13,11 +9,12 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import Model.*;
+import java.io.IOException;
+import javax.xml.parsers.ParserConfigurationException;
+import org.w3c.dom.DOMException;
+import org.xml.sax.SAXException;
 
 public class CargaXML {
-
-    public CargaXML() {
-    }
 
     public boolean cargarStandsXML(Feria feria) {
         try {
@@ -35,7 +32,6 @@ public class CargaXML {
                 if (nodoStand.getNodeType() == Node.ELEMENT_NODE) {
                     Element elementoStand = (Element) nodoStand;
                     Element elementoStandInterior = (Element) elementoStand.getElementsByTagName("StandInterior").item(0);
-                    Element elementoStandExterior = (Element) elementoStand.getElementsByTagName("StandExterior").item(0);
                     String idStand = elementoStand.getElementsByTagName("idStand").item(0).getTextContent();
                     int superficie = Integer.parseInt(elementoStand.getElementsByTagName("superficie").item(0).getTextContent());
                     float precioM2 = Float.parseFloat(elementoStand.getElementsByTagName("precioM2").item(0).getTextContent());
@@ -72,8 +68,7 @@ public class CargaXML {
                 }
             }
             return true;
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (IOException | NumberFormatException | ParserConfigurationException | DOMException | SAXException e) {
             return false;
         }
     }
