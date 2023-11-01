@@ -14,8 +14,16 @@ import javax.xml.parsers.ParserConfigurationException;
 import org.w3c.dom.DOMException;
 import org.xml.sax.SAXException;
 
+/**
+ * La clase `CargaXML` se encarga de cargar datos desde un archivo XML y utilizarlos para construir objetos relacionados con la Feria. En particular, carga información sobre stands, clientes, y accesorios, y construye objetos correspondientes en la instancia de la Feria.
+ */
 public class CargaXML {
-
+    
+    /**
+     * Carga información sobre stands desde un archivo XML y la utiliza para crear objetos Stand, Cliente y Accesorio en la instancia de la Feria proporcionada.
+     * @param feria La instancia de la Feria en la que se crearán los objetos.
+     * @return `true` si la carga se realiza con éxito, `false` si hay errores.
+     */
     public boolean cargarStandsXML(Feria feria) {
         try {
             File archivoXML = new File("src/main/java/xml/Stands.xml");
