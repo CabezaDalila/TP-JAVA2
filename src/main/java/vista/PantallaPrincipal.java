@@ -8,10 +8,19 @@ import java.io.File;
 import javax.swing.JOptionPane;
 import xml.*;
 
+/**
+ * La clase `PantallaPrincipal` representa la interfaz de usuario principal de la aplicación.
+ * Desde esta interfaz, los usuarios pueden acceder a diferentes funcionalidades, como cargar datos XML,
+ * ver stands y acceder a informes.
+ */
 public class PantallaPrincipal extends javax.swing.JFrame {
 
     private static Feria feria;
-
+    
+    /**
+     * Constructor de la clase `PantallaPrincipal`. Inicializa la interfaz de usuario y la instancia de `Feria`.
+     * También verifica si existe un archivo de datos. Si no existe, solicita al usuario el nombre del perfil.
+     */
     public PantallaPrincipal() {
         initComponents();
         this.feria = Feria.getInstance();
@@ -41,6 +50,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     }
 
     @SuppressWarnings("unchecked")
+    
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -263,13 +273,20 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Maneja el evento de clic en el botón de "Reportes". Abre una ventana para mostrar informes.
+     * @param evt Evento de clic en el botón.
+     */
     private void btnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesActionPerformed
         Reportes ventanaReportes = new Reportes();
         ventanaReportes.setVisible(true);
         ventanaReportes.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnReportesActionPerformed
 
+    /**
+     * Maneja el evento de clic en el botón de "Ver Stands". Permite al usuario buscar los stands de un cliente por ID.
+     * @param evt Evento de clic en el botón.
+     */
     private void btnStandsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStandsActionPerformed
         String textoIngresado = JOptionPane.showInputDialog("Ingrese el ID del cliente del que quiere consultar sus Stands:");
         if (textoIngresado != null) {
@@ -284,7 +301,11 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_btnStandsActionPerformed
-
+    
+    /**
+     * Maneja el evento de clic en el botón de "Cargar datos XML". Permite cargar datos desde un archivo XML.
+     * @param evt Evento de clic en el botón.
+     */
     private void btnCargarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarDatosActionPerformed
         if (feria.getListaStands().size() == 0) {
             CargaXML cargador = new CargaXML();
@@ -300,9 +321,13 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_btnCargarDatosActionPerformed
-
+    
+    /**
+     * Boton decorativo.
+     * @param evt Evento de clic en el botón.
+     */
     private void btnPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrincipalActionPerformed
-        // TODO add your handling code here:
+  
     }//GEN-LAST:event_btnPrincipalActionPerformed
 
 

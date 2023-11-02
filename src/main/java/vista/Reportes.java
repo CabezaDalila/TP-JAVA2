@@ -10,7 +10,11 @@ import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
 
-
+/**
+* La clase `Reportes` representa la interfaz de usuario para generar y mostrar informes relacionados con accesorios y stands de la feria.
+* Proporciona funcionalidades para generar archivos TXT con datos de accesorios y stands, calcular el valor promedio de los stands,
+* y mostrar tablas con información detallada sobre accesorios y stands.
+*/
 public class Reportes extends javax.swing.JFrame {
 
     private static Feria feria;
@@ -18,7 +22,8 @@ public class Reportes extends javax.swing.JFrame {
     ReporteStands reposteStands = new ReporteStands();
 
     /**
-     * Creates new form Reportes
+     * Constructor de la clase `Reportes`. Inicializa la interfaz de usuario y obtiene la instancia de la feria.
+     * Calcula el valor promedio de los stands y carga las tablas con información detallada sobre accesorios y stands.
      */
     public Reportes() {
         initComponents();
@@ -157,6 +162,10 @@ public class Reportes extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Maneja el evento de descarga del informe de accesorios a un archivo de texto.
+     * Muestra un mensaje de éxito o error en la generación del archivo.
+     */
     private void jBtnDescargarAccActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnDescargarAccActionPerformed
         try {
             reporteAccesorios.generaTxtReporteAccesorios();
@@ -168,7 +177,11 @@ public class Reportes extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jBtnDescargarAccActionPerformed
-
+    
+    /**
+     * Maneja el evento de descarga del informe de stands a un archivo de texto.
+     * Muestra un mensaje de éxito o error en la generación del archivo.
+     */
     private void jBtnDescargarStandsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnDescargarStandsActionPerformed
         try {
             reposteStands.generaTxtReporteStands();
@@ -179,9 +192,13 @@ public class Reportes extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_jBtnDescargarStandsActionPerformed
-
+    
+    /**
+     * Carga y muestra la información detallada de los stands en la tabla de la interfaz gráfica.
+     * Los datos se obtienen del informe generado por la clase `ReporteStands`.
+     */
     private void cargarTablaStand() {
-        //para que las filas y columnas no se puedan editar
+
         DefaultTableModel modeloTabla = new DefaultTableModel() {
 
             @Override
@@ -198,7 +215,7 @@ public class Reportes extends javax.swing.JFrame {
 
         List<Stand> listaStands = reposteStands.ordenaStandDescendentePorValor();
 
-        //setear los datos en la tabla
+
         if (listaStands != null) {
             for (Stand stand : listaStands) {
                 StringBuilder descripcionAccesorios = stand.devuelveAccesorios();
@@ -210,9 +227,12 @@ public class Reportes extends javax.swing.JFrame {
         TablaReporteStands.setModel(modeloTabla);
 
     }
-
+    /**
+     * Carga y muestra la información detallada de los accesorios en la tabla de la interfaz gráfica.
+     * Los datos se obtienen del informe generado por la clase `ReporteAccesorios`.
+     */
     private void cargarTablaAcc()  {
-        //para que las filas y columnas no se puedan editar
+
         DefaultTableModel modeloTabla = new DefaultTableModel() {
 
             @Override
@@ -221,7 +241,7 @@ public class Reportes extends javax.swing.JFrame {
             }
 
         };
-        //CAMBIAR TITULOS POR LAS VARIABLES QUE TENGA ACC O LAS QUE TENGAS QUE MOSTRAR 
+        
         String titulos[] = {"ID", "Descripcion", "Precio", "Cant de usos"};
         modeloTabla.setColumnIdentifiers(titulos);
         TablaReporteAccesorios.setModel(modeloTabla);

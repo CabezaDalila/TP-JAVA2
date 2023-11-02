@@ -10,23 +10,38 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * La clase `ReporteStands` se encarga de generar informes relacionados con los stands en la feria.
+ * Estos informes incluyen la lista de stands ordenada por su valor total y el valor promedio de los stands en la feria.
+ */
 public class ReporteStands {
 
     private static Feria feria;
 
+    /**
+     * Constructor de la clase `ReporteStands`. Inicializa la instancia de la feria.
+     */
     public ReporteStands() {
         this.feria = Feria.getInstance();
     }
 
-    //Recorrido con stream
+    /**
+     * Ordena la lista de stands en orden descendente según su valor total.
+     *
+     * @return Una lista de stands ordenada por valor total en orden descendente.
+     */
     public List<Stand> ordenaStandDescendentePorValor() {
         List<Stand> listaOrdenada = feria.getListaStands().stream()
                 .sorted((stand1, stand2) -> Float.compare(stand2.valorTotalStand(), stand1.valorTotalStand()))
                 .toList();
         return listaOrdenada;
     }
-    //Recorrido con iterator
 
+    /**
+     * Calcula el valor promedio de los stands en la feria.
+     *
+     * @return El valor promedio de los stands o 0 si no hay stands en la feria.
+     */
     public float valorPromedioStands() {
         float suma = 0;
         int cont = 0;
@@ -39,12 +54,17 @@ public class ReporteStands {
         return cont > 0 ? suma / cont : 0;
     }
 
-    //Recorrido con for each
-    //Se podria haber usado NIO.2 que es mas nuevo, y mejora el uso
-    public void generaTxtReporteStands() throws IOException, ListaVacia{
+    /**
+     * Genera un archivo de texto que contiene un informe de los stands en la feria, incluyendo su valor total, superficie,
+     * precio por metro cuadrado y lista de accesorios. Además, se incluye el valor promedio de los stands.
+     *
+     * @throws IOException  Si ocurre un error de E/S al escribir el archivo.
+     * @throws ListaVacia   Si la lista de stands en la feria está vacía.
+     */
+    public void generaTxtReporteStands() throws IOException, ListaVacia {
         String Archivo = "Reporte de Stands.txt";
         FileWriter fileWriter = new FileWriter(Archivo);
-        if(ordenaStandDescendentePorValor()!= null){
+        if (ordenaStandDescendentePorValor() != null) {
             try (BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
                 bufferedWriter.write("Listado completo de stands ordenados descendentemente por su valor total:\n");
                 List<Stand> listaStandsOrdenados = ordenaStandDescendentePorValor();
@@ -61,10 +81,9 @@ public class ReporteStands {
                 }
                 String valorPromedio = String.valueOf(valorPromedioStands());
                 bufferedWriter.write("Valor promedio de los stands: " + valorPromedio + "\n");
-
             }
+        } else {
+            throw new ListaVacia("Error: Lista de stands vacía");
         }
-        else
-            throw new ListaVacia("Error: Lista de stands vacia");
     }
 }

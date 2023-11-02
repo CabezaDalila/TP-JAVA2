@@ -5,10 +5,19 @@ import Model.Stand;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
+/**
+ * La clase `VerDatosCliente` representa una ventana de la interfaz de usuario que muestra información detallada sobre los stands
+ * de un cliente específico. Muestra una lista de stands asociados al cliente, incluyendo detalles como ID, superficie, precio por metro cuadrado y accesorios.
+ */
 public class VerDatosCliente extends javax.swing.JFrame {
 
     private Cliente cliente;
 
+    /**
+     * Constructor de la clase `VerDatosCliente`. Recibe un objeto de la clase `Cliente` como parámetro y lo asocia con la instancia actual.
+     * Inicializa la interfaz de usuario y muestra información básica sobre el cliente en la etiqueta de datos.
+     * @param cliente El cliente del cual se mostrarán los detalles de los stands.
+     */
     public VerDatosCliente(Cliente cliente) {
         this.cliente = cliente;
         initComponents();
@@ -72,7 +81,10 @@ public class VerDatosCliente extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    /**
+     * Método que se ejecuta cuando la ventana se abre. Carga la tabla con los detalles de los stands asociados al cliente.
+     */
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         cargarTabla();
     }//GEN-LAST:event_formWindowOpened
@@ -84,9 +96,12 @@ public class VerDatosCliente extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tablaStands;
     // End of variables declaration//GEN-END:variables
-
+    
+    /**
+     * Carga y muestra la información detallada de los stands asociados al cliente en una tabla de la interfaz gráfica.
+     */
     private void cargarTabla() {
-        //para que las filas y columnas no se puedan editar
+
         DefaultTableModel modeloTabla = new DefaultTableModel() {
 
             @Override
@@ -96,16 +111,16 @@ public class VerDatosCliente extends javax.swing.JFrame {
 
         };
 
-        //poner titulos a las columnas
+
         String titulos[] = {"ID", "Superficie", "Precio M2", "Accesorios"};
         modeloTabla.setColumnIdentifiers(titulos);
 
         tablaStands.setModel(modeloTabla);
 
-        //traer stands que tiene el cliente
+
         List<Stand> listaStands = cliente.getListaStands();
 
-        //setear los datos en la tabla
+
         if (listaStands != null) {
             for (Stand stand : listaStands) {
 
