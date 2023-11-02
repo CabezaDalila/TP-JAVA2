@@ -37,6 +37,7 @@ public class ReporteStands {
         return listaOrdenada;
     }
 
+
     /**
      * Calcula el valor promedio de los stands en la feria.
      *
@@ -64,7 +65,7 @@ public class ReporteStands {
     public void generaTxtReporteStands() throws IOException, ListaVacia {
         String Archivo = "Reporte de Stands.txt";
         FileWriter fileWriter = new FileWriter(Archivo);
-        if (ordenaStandDescendentePorValor() != null) {
+        if (ordenaStandDescendentePorValor().size()!=0) {
             try (BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
                 bufferedWriter.write("Listado completo de stands ordenados descendentemente por su valor total:\n");
                 List<Stand> listaStandsOrdenados = ordenaStandDescendentePorValor();

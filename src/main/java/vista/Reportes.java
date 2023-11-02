@@ -183,14 +183,22 @@ public class Reportes extends javax.swing.JFrame {
      * Muestra un mensaje de éxito o error en la generación del archivo.
      */
     private void jBtnDescargarStandsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnDescargarStandsActionPerformed
-        try {
+        /*try {
             reposteStands.generaTxtReporteStands();
             JOptionPane.showMessageDialog(null, "El archivo TXT fue generado con éxito");
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, "El archivo NO fue generado", "Error", JOptionPane.ERROR_MESSAGE);
         } catch (ListaVacia e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        }
+        }*/
+        try {
+        reposteStands.generaTxtReporteStands();
+        JOptionPane.showMessageDialog(null, "El archivo TXT fue generado con éxito");
+    } catch (ListaVacia e) {
+        JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    } catch (IOException ex) {
+        JOptionPane.showMessageDialog(null, "El archivo NO fue generado", "Error", JOptionPane.ERROR_MESSAGE);
+    }
     }//GEN-LAST:event_jBtnDescargarStandsActionPerformed
     
     /**
