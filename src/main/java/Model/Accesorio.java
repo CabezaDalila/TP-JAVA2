@@ -20,7 +20,7 @@ public class Accesorio implements Comparable<Accesorio>, Serializable {
     private double precioAlquiler;
 
     /**
-     * Crea un nuevo objeto `Accesorio` sin valores iniciales. Deberás
+     * Crea un nuevo objeto `Accesorio` sin valores iniciales. Se debera
      * establecer los valores de las propiedades por separado utilizando
      * los métodos setter.
      */
@@ -48,28 +48,6 @@ public class Accesorio implements Comparable<Accesorio>, Serializable {
     public String getIdAccesorio() {
         return idAccesorio;
     }
-
-    /**
-     * Establece el ID del accesorio.
-     *
-     * @param idAccesorio El nuevo ID del accesorio.
-     */
-    public void setIdAccesorio(String idAccesorio) {
-        this.idAccesorio = idAccesorio;
-    }
-
-    /**
-     * Compara este accesorio con otro accesorio en función de sus IDs.
-     *
-     * @param otroAccesorio El otro accesorio a comparar.
-     * @return Un valor negativo si este accesorio es menor, un valor positivo
-     * si es mayor o cero si son iguales.
-     */
-    @Override
-    public int compareTo(Accesorio otroAccesorio) {
-        return this.idAccesorio.compareTo(otroAccesorio.idAccesorio);
-    }
-
     /**
      * Obtiene la descripción del accesorio.
      *
@@ -78,17 +56,8 @@ public class Accesorio implements Comparable<Accesorio>, Serializable {
     public String getDescAccesorio() {
         return descAccesorio;
     }
-
-    /**
-     * Establece la descripción del accesorio.
-     *
-     * @param descAccesorio La nueva descripción del accesorio.
-     */
-    public void setDescAccesorio(String descAccesorio) {
-        this.descAccesorio = descAccesorio;
-    }
-
-    /**
+    
+      /**
      * Obtiene el precio de alquiler del accesorio.
      *
      * @return El precio de alquiler del accesorio.
@@ -104,6 +73,35 @@ public class Accesorio implements Comparable<Accesorio>, Serializable {
      */
     public void setPrecioAlquiler(double precioAlquiler) {
         this.precioAlquiler = precioAlquiler;
+    }
+    
+    /**
+     * Establece el ID del accesorio.
+     *
+     * @param idAccesorio El nuevo ID del accesorio.
+     */
+    public void setIdAccesorio(String idAccesorio) {
+        this.idAccesorio = idAccesorio;
+    }
+    /**
+     * Establece la descripción del accesorio.
+     *
+     * @param descAccesorio La nueva descripción del accesorio.
+     */
+    public void setDescAccesorio(String descAccesorio) {
+        this.descAccesorio = descAccesorio;
+    }
+
+    /**
+     * Compara este accesorio con otro accesorio en función de sus IDs.
+     *
+     * @param otroAccesorio El otro accesorio a comparar.
+     * @return Un valor negativo si este accesorio es menor, un valor positivo
+     * si es mayor o cero si son iguales.
+     */
+    @Override
+    public int compareTo(Accesorio otroAccesorio) {
+        return this.idAccesorio.compareTo(otroAccesorio.idAccesorio);
     }
 
     /**

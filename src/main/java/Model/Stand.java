@@ -16,16 +16,6 @@ public abstract class Stand implements Comparable<Stand>, Serializable {
     private ArrayList<Accesorio> listaAccesorios;
 
     /**
-     * Compara dos stands según su ID para ordenarlos.
-     * @param o El stand a comparar.
-     * @return Un valor negativo, cero o positivo si este stand es menor, igual o mayor que el stand proporcionado, respectivamente.
-     */
-    @Override
-    public int compareTo(Stand o) {
-        return this.idStand.compareTo(o.idStand);
-    }
-
-    /**
      * Constructor por defecto de la clase `Stand`.
      */
     public Stand() {
@@ -56,19 +46,19 @@ public abstract class Stand implements Comparable<Stand>, Serializable {
     }
 
     /**
+     * Agrega un accesorio a la lista de accesorios del stand.
+     * @param accesorio El accesorio a agregar.
+     */
+    public void agregaAccesorio(Accesorio accesorio) {
+        listaAccesorios.add(accesorio);
+    }
+    
+    /**
      * Obtiene el ID del stand.
      * @return El ID del stand.
      */
     public String getIdStand() {
         return idStand;
-    }
-
-    /**
-     * Establece el ID del stand.
-     * @param idStand El nuevo ID del stand.
-     */
-    public void setIdStand(String idStand) {
-        this.idStand = idStand;
     }
 
     /**
@@ -80,6 +70,30 @@ public abstract class Stand implements Comparable<Stand>, Serializable {
     }
 
     /**
+     * Obtiene el precio por metro cuadrado del stand.
+     * @return El precio por metro cuadrado del stand.
+     */
+    public float getPrecio() {
+        return precioM2;
+    }
+    
+    /**
+     * Obtiene el cliente que alquila el stand.
+     * @return El cliente que alquila el stand.
+     */
+    public Cliente getUnCliente() {
+        return cliente;
+    }
+    
+    /**
+     * Obtiene la lista de accesorios asociados al stand.
+     * @return La lista de accesorios del stand.
+     */
+    public ArrayList<Accesorio> getListaAccesorios() {
+        return listaAccesorios;
+    }
+    
+    /**
      * Establece la superficie del stand.
      * @param superficie La nueva superficie del stand.
      */
@@ -88,11 +102,11 @@ public abstract class Stand implements Comparable<Stand>, Serializable {
     }
 
     /**
-     * Obtiene el precio por metro cuadrado del stand.
-     * @return El precio por metro cuadrado del stand.
+     * Establece el ID del stand.
+     * @param idStand El nuevo ID del stand.
      */
-    public float getPrecio() {
-        return precioM2;
+    public void setIdStand(String idStand) {
+        this.idStand = idStand;
     }
 
     /**
@@ -104,29 +118,13 @@ public abstract class Stand implements Comparable<Stand>, Serializable {
     }
 
     /**
-     * Obtiene el cliente que alquila el stand.
-     * @return El cliente que alquila el stand.
-     */
-    public Cliente getUnCliente() {
-        return cliente;
-    }
-
-    /**
      * Establece el cliente que alquila el stand.
      * @param unCliente El nuevo cliente que alquila el stand.
      */
     public void setUnCliente(Cliente unCliente) {
         this.cliente = unCliente;
     }
-
-    /**
-     * Obtiene la lista de accesorios asociados al stand.
-     * @return La lista de accesorios del stand.
-     */
-    public ArrayList<Accesorio> getListaAccesorios() {
-        return listaAccesorios;
-    }
-
+    
     /**
      * Establece la lista de accesorios asociados al stand.
      * @param listaAccesorios La nueva lista de accesorios.
@@ -136,11 +134,13 @@ public abstract class Stand implements Comparable<Stand>, Serializable {
     }
 
     /**
-     * Agrega un accesorio a la lista de accesorios del stand.
-     * @param accesorio El accesorio a agregar.
+     * Compara dos stands según su ID para ordenarlos.
+     * @param o El stand a comparar.
+     * @return Un valor negativo, cero o positivo si este stand es menor, igual o mayor que el stand proporcionado, respectivamente.
      */
-    public void agregaAccesorio(Accesorio accesorio) {
-        listaAccesorios.add(accesorio);
+    @Override
+    public int compareTo(Stand o) {
+        return this.idStand.compareTo(o.idStand);
     }
 
     /**
