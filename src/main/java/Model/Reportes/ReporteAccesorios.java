@@ -54,7 +54,7 @@ public class ReporteAccesorios {
     public void generaTxtReporteAccesorios() throws IOException, ListaVacia {
         String Archivo = "Reporte de Accesorios.txt";
         FileWriter fileWriter = new FileWriter(Archivo);
-        if (feria.getListaAccesorios() != null) {
+        if (feria.getListaAccesorios().size()!=0) {
             try (BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
                 bufferedWriter.write("Listado de accesorios ordenado alfabéticamente por su descripción:\n");
                 Map<String, Integer> accOrdenados = reporteAccesoriosOrdenAlfabetico();
