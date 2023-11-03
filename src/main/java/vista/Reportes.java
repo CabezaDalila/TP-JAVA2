@@ -1,12 +1,10 @@
 package vista;
 
 import Excepciones.ListaVacia;
-import Model.*;
-import Model.Reportes.*;
+import Modelo.*;
+import Modelo.Reportes.*;
 import java.io.IOException;
 import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
 
@@ -19,7 +17,7 @@ public class Reportes extends javax.swing.JFrame {
 
     private static Feria feria;
     ReporteAccesorios reporteAccesorios = new ReporteAccesorios();
-    ReporteStands reposteStands = new ReporteStands();
+    ReporteStands reporteStands = new ReporteStands();
 
     /**
      * Constructor de la clase `Reportes`. Inicializa la interfaz de usuario y obtiene la instancia de la feria.
@@ -28,7 +26,7 @@ public class Reportes extends javax.swing.JFrame {
     public Reportes() {
         initComponents();
         feria = Feria.getInstance();
-        float valorPromedio = reposteStands.valorPromedioStands();
+        float valorPromedio = reporteStands.valorPromedioStands();
         promedio.setText(String.format("%.2f", valorPromedio));
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         cargarTablaStand();
@@ -184,7 +182,7 @@ public class Reportes extends javax.swing.JFrame {
      */
     private void jBtnDescargarStandsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnDescargarStandsActionPerformed
         try {
-            reposteStands.generaTxtReporteStands();
+            reporteStands.generaTxtReporteStands();
             JOptionPane.showMessageDialog(null, "El archivo TXT fue generado con éxito");
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, "El archivo NO fue generado", "Error", JOptionPane.ERROR_MESSAGE);
@@ -213,7 +211,7 @@ public class Reportes extends javax.swing.JFrame {
 
         TablaReporteStands.setModel(modeloTabla);
 
-        List<Stand> listaStands = reposteStands.ordenaStandDescendentePorValor();
+        List<Stand> listaStands = reporteStands.ordenaStandDescendentePorValor();
 
 
         if (listaStands != null) {

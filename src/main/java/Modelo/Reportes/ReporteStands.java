@@ -1,9 +1,9 @@
-package Model.Reportes;
+package Modelo.Reportes;
 
 import Excepciones.ListaVacia;
-import Model.Accesorio;
-import Model.Feria;
-import Model.Stand;
+import Modelo.Accesorio;
+import Modelo.Feria;
+import Modelo.Stand;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -63,9 +63,9 @@ public class ReporteStands {
      * @throws ListaVacia   Si la lista de stands en la feria está vacía.
      */
     public void generaTxtReporteStands() throws IOException, ListaVacia {
-        String Archivo = "Reporte de Stands.txt";
-        FileWriter fileWriter = new FileWriter(Archivo);
-        if (ordenaStandDescendentePorValor().size()!=0) {
+        if (!ordenaStandDescendentePorValor().isEmpty()) {
+            String Archivo = "Reporte de Stands.txt";
+            FileWriter fileWriter = new FileWriter(Archivo);
             try (BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
                 bufferedWriter.write("Listado completo de stands ordenados descendentemente por su valor total:\n");
                 List<Stand> listaStandsOrdenados = ordenaStandDescendentePorValor();

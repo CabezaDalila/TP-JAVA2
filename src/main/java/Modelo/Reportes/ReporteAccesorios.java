@@ -1,7 +1,7 @@
-package Model.Reportes;
+package Modelo.Reportes;
 
 import Excepciones.ListaVacia;
-import Model.*;
+import Modelo.*;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -52,13 +52,12 @@ public class ReporteAccesorios {
      * @throws ListaVacia   Si la lista de accesorios en la feria está vacía.
      */
     public void generaTxtReporteAccesorios() throws IOException, ListaVacia {
-        String Archivo = "Reporte de Accesorios.txt";
-        FileWriter fileWriter = new FileWriter(Archivo);
-        if (feria.getListaAccesorios().size()!=0) {
+       if (!feria.getListaAccesorios().isEmpty()) {
+            String Archivo = "Reporte de Accesorios.txt";
+             FileWriter fileWriter = new FileWriter(Archivo);
             try (BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
                 bufferedWriter.write("Listado de accesorios ordenado alfabéticamente por su descripción:\n");
                 Map<String, Integer> accOrdenados = reporteAccesoriosOrdenAlfabetico();
-                Set<Accesorio> listaAcc = feria.getListaAccesorios();
                 for (Map.Entry<String, Integer> entry : accOrdenados.entrySet()) {
                     bufferedWriter.write("Descripcion Accesorio: " + entry.getKey() + "\n");
                     bufferedWriter.write("Cantidad de usos: " + entry.getValue() + "\n");

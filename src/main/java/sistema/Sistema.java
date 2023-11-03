@@ -1,6 +1,6 @@
 package sistema;
 
-import Model.*;
+import Modelo.*;
 import vista.PantallaPrincipal;
 
 /**
