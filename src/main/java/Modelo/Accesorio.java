@@ -41,6 +41,18 @@ public class Accesorio implements Comparable<Accesorio>, Serializable {
     }
 
     /**
+     * Compara este accesorio con otro accesorio en función de sus IDs.
+     *
+     * @param otroAccesorio El otro accesorio a comparar.
+     * @return Un valor negativo si este accesorio es menor, un valor positivo
+     * si es mayor o cero si son iguales.
+     */
+    @Override
+    public int compareTo(Accesorio otroAccesorio) {
+        return this.idAccesorio.compareTo(otroAccesorio.idAccesorio);
+    }
+
+    /**
      * Obtiene el ID del accesorio.
      *
      * @return El ID del accesorio.
@@ -90,18 +102,6 @@ public class Accesorio implements Comparable<Accesorio>, Serializable {
      */
     public void setDescAccesorio(String descAccesorio) {
         this.descAccesorio = descAccesorio;
-    }
-
-    /**
-     * Compara este accesorio con otro accesorio en función de sus IDs.
-     *
-     * @param otroAccesorio El otro accesorio a comparar.
-     * @return Un valor negativo si este accesorio es menor, un valor positivo
-     * si es mayor o cero si son iguales.
-     */
-    @Override
-    public int compareTo(Accesorio otroAccesorio) {
-        return this.idAccesorio.compareTo(otroAccesorio.idAccesorio);
     }
 
     /**
