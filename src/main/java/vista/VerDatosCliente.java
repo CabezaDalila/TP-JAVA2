@@ -1,7 +1,7 @@
 package vista;
 
-import Model.Cliente;
-import Model.Stand;
+import Modelo.Cliente;
+import Modelo.Stand;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 

@@ -1,4 +1,4 @@
-package Model;
+package Modelo;
 
 import java.io.Serializable;
 
@@ -20,7 +20,7 @@ public class Accesorio implements Comparable<Accesorio>, Serializable {
     private double precioAlquiler;
 
     /**
-     * Crea un nuevo objeto `Accesorio` sin valores iniciales. Deberás
+     * Crea un nuevo objeto `Accesorio` sin valores iniciales. Se debera
      * establecer los valores de las propiedades por separado utilizando
      * los métodos setter.
      */
@@ -41,24 +41,6 @@ public class Accesorio implements Comparable<Accesorio>, Serializable {
     }
 
     /**
-     * Obtiene el ID del accesorio.
-     *
-     * @return El ID del accesorio.
-     */
-    public String getIdAccesorio() {
-        return idAccesorio;
-    }
-
-    /**
-     * Establece el ID del accesorio.
-     *
-     * @param idAccesorio El nuevo ID del accesorio.
-     */
-    public void setIdAccesorio(String idAccesorio) {
-        this.idAccesorio = idAccesorio;
-    }
-
-    /**
      * Compara este accesorio con otro accesorio en función de sus IDs.
      *
      * @param otroAccesorio El otro accesorio a comparar.
@@ -71,6 +53,14 @@ public class Accesorio implements Comparable<Accesorio>, Serializable {
     }
 
     /**
+     * Obtiene el ID del accesorio.
+     *
+     * @return El ID del accesorio.
+     */
+    public String getIdAccesorio() {
+        return idAccesorio;
+    }
+    /**
      * Obtiene la descripción del accesorio.
      *
      * @return La descripción del accesorio.
@@ -78,17 +68,8 @@ public class Accesorio implements Comparable<Accesorio>, Serializable {
     public String getDescAccesorio() {
         return descAccesorio;
     }
-
-    /**
-     * Establece la descripción del accesorio.
-     *
-     * @param descAccesorio La nueva descripción del accesorio.
-     */
-    public void setDescAccesorio(String descAccesorio) {
-        this.descAccesorio = descAccesorio;
-    }
-
-    /**
+    
+      /**
      * Obtiene el precio de alquiler del accesorio.
      *
      * @return El precio de alquiler del accesorio.
@@ -104,6 +85,23 @@ public class Accesorio implements Comparable<Accesorio>, Serializable {
      */
     public void setPrecioAlquiler(double precioAlquiler) {
         this.precioAlquiler = precioAlquiler;
+    }
+    
+    /**
+     * Establece el ID del accesorio.
+     *
+     * @param idAccesorio El nuevo ID del accesorio.
+     */
+    public void setIdAccesorio(String idAccesorio) {
+        this.idAccesorio = idAccesorio;
+    }
+    /**
+     * Establece la descripción del accesorio.
+     *
+     * @param descAccesorio La nueva descripción del accesorio.
+     */
+    public void setDescAccesorio(String descAccesorio) {
+        this.descAccesorio = descAccesorio;
     }
 
     /**

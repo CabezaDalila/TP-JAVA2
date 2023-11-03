@@ -1,5 +1,5 @@
 
-package Model;
+package Modelo;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -49,7 +49,19 @@ public class Cliente implements Comparable<Cliente>, Serializable {
     public int compareTo(Cliente otroCliente) {
         return this.idCliente.compareTo(otroCliente.idCliente);
     }
-
+    
+    /**
+     * Agrega una lista de stands a los stands del cliente.
+     *
+     * @param nuevaLista La lista de stands que se va a agregar.
+     */
+    void agregaStands(ArrayList<Stand> nuevaLista) {
+        if (listaStands == null) {
+            listaStands = new ArrayList<>();
+        }
+        listaStands.addAll(nuevaLista);
+    }
+    
     /**
      * Obtiene el ID del cliente.
      *
@@ -57,6 +69,22 @@ public class Cliente implements Comparable<Cliente>, Serializable {
      */
     public String getIdCliente() {
         return idCliente;
+    }
+     /**
+     * Obtiene la descripción del cliente.
+     *
+     * @return La descripción del cliente.
+     */
+    public String getDescCliente() {
+        return descCliente;
+    }
+    /**
+     * Obtiene la lista de stands asociados a este cliente.
+     *
+     * @return La lista de stands del cliente.
+     */
+    public ArrayList<Stand> getListaStands() {
+        return listaStands;
     }
 
     /**
@@ -69,30 +97,12 @@ public class Cliente implements Comparable<Cliente>, Serializable {
     }
 
     /**
-     * Obtiene la descripción del cliente.
-     *
-     * @return La descripción del cliente.
-     */
-    public String getDescCliente() {
-        return descCliente;
-    }
-
-    /**
      * Establece la descripción del cliente.
      *
      * @param descCliente La nueva descripción del cliente.
      */
     public void setDescCliente(String descCliente) {
         this.descCliente = descCliente;
-    }
-
-    /**
-     * Obtiene la lista de stands asociados a este cliente.
-     *
-     * @return La lista de stands del cliente.
-     */
-    public ArrayList<Stand> getListaStands() {
-        return listaStands;
     }
 
     /**
@@ -135,18 +145,6 @@ public class Cliente implements Comparable<Cliente>, Serializable {
         }
         final Cliente other = (Cliente) obj;
         return Objects.equals(this.idCliente, other.idCliente);
-    }
-
-    /**
-     * Agrega una lista de stands a los stands del cliente.
-     *
-     * @param nuevaLista La lista de stands que se va a agregar.
-     */
-    void agregaStands(ArrayList<Stand> nuevaLista) {
-        if (listaStands == null) {
-            listaStands = new ArrayList<>();
-        }
-        listaStands.addAll(nuevaLista);
     }
 
     /**

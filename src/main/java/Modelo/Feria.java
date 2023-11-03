@@ -1,4 +1,4 @@
-package Model;
+package Modelo;
 
 import java.util.*;
 import Excepciones.ClienteNoEncontrado;
@@ -91,7 +91,17 @@ public class Feria implements Serializable {
     public void agregarAccesorio(Accesorio accesorio) {
         listaAccesorios.add(accesorio);
     }
-
+    
+     /**
+     * Agrega un stand a la lista de stands de la feria.
+     *
+     * @param stand El stand a agregar.
+     */
+    public void agregaStand(Stand stand) {
+        if (!listaStands.contains(stand)) {
+            listaStands.add(stand);
+        }
+    }
     /**
      * Obtiene la lista de accesorios de la feria.
      *
@@ -117,17 +127,6 @@ public class Feria implements Serializable {
      */
     public Set<Cliente> getListaClientes() {
         return listaClientes;
-    }
-
-    /**
-     * Agrega un stand a la lista de stands de la feria.
-     *
-     * @param stand El stand a agregar.
-     */
-    public void agregaStand(Stand stand) {
-        if (!listaStands.contains(stand)) {
-            listaStands.add(stand);
-        }
     }
 
     /**

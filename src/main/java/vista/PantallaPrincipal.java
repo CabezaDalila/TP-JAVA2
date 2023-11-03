@@ -1,6 +1,6 @@
 package vista;
 
-import Model.*;
+import Modelo.*;
 import Excepciones.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
