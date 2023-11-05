@@ -21,6 +21,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
     private static Feria feria;
     
+     private VerDatosStands datosStands;
+    
     /**
      * Constructor de la clase `PantallaPrincipal`. Inicializa la interfaz de usuario y la instancia de `Feria`.
      * También verifica si existe un archivo de datos. Si no existe, solicita al usuario el nombre del perfil.
@@ -184,10 +186,6 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -202,7 +200,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(106, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/stand02.jpg"))); // NOI18N
@@ -266,53 +264,24 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         ventanaReportes.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnReportesActionPerformed
 
-    /**
-     * Maneja el evento de clic en el botón de "Ver Stands". Permite al usuario buscar los stands de un cliente por ID.
-     * @param evt Evento de clic en el botón.
-     */
-    
-  
-    /**
+   /**
     * Maneja el evento de acción cuando se hace clic en el botón "Stands".
-    * Muestra un cuadro de diálogo que permite al usuario seleccionar un cliente de una lista
-    * de clientes disponibles y muestra los detalles de dicho cliente en una nueva ventana.
-    * Si no hay clientes cargados, muestra un mensaje de advertencia.
     *
-    * @param evt El evento de acción que desencadenó esta función.
+    * Este método verifica si hay datos de stands cargados en la feria. Si no hay datos,
+    * muestra un mensaje de error. En caso contrario, abre la ventana "VerDatosStands" para
+    * mostrar la información de los stands y la ubica en el centro de la pantalla.
+    *
+    * @param evt El evento de acción generado por hacer clic en el botón "Stands".
     */
     private void btnStandsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStandsActionPerformed
+        if(feria.getListaStands().size()==0)
+            JOptionPane.showMessageDialog(this, "No hay datos cargados", "Error en la Carga", JOptionPane.ERROR_MESSAGE);
+        else{
+            datosStands=new VerDatosStands();
+            datosStands.setVisible(true);
+            datosStands.setLocationRelativeTo(null);
+        }
        
-        JComboBox<String> clienteComboBox = new JComboBox<>();
-        Set<Cliente> listaClientes=feria.getListaClientes();
-        
-        if (listaClientes.isEmpty()) {
-           JOptionPane.showMessageDialog(null, "No hay Stands cargados", "Aviso", JOptionPane.WARNING_MESSAGE);
-           return;
-        }
-
-        for(Cliente cliente: listaClientes){
-            clienteComboBox.addItem(cliente.getIdCliente());
-        }
-        JPanel panel = new JPanel();
-        panel.add(new JLabel("Seleccione un cliente:"));
-        panel.add(clienteComboBox);
-
-        int result = JOptionPane.showConfirmDialog(null, panel, "Seleccionar Cliente", JOptionPane.OK_CANCEL_OPTION);
-
-        if (result == JOptionPane.OK_OPTION) {
-            // Obtiene el cliente seleccionado
-            String selectedCliente = (String) clienteComboBox.getSelectedItem();
-
-            // Realiza la acción con el cliente seleccionado (por ejemplo, busca el cliente y muestra sus datos)
-            try {
-                Cliente cliente = feria.buscaClientePorId(selectedCliente);
-                VerDatosCliente datosCliente = new VerDatosCliente(cliente);
-                datosCliente.setVisible(true);
-                datosCliente.setLocationRelativeTo(null);
-            } catch (ClienteNoEncontrado e) {
-                JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        }
     }//GEN-LAST:event_btnStandsActionPerformed
     
     /**
@@ -348,6 +317,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
