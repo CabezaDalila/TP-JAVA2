@@ -156,4 +156,5 @@ public class Cliente implements Comparable<Cliente>, Serializable {
     public String toString() {
         return "Cliente{" + "idCliente=" + idCliente + ", descCliente=" + descCliente + ", listaStands=" + listaStands + '}';
     }
+    
 }
