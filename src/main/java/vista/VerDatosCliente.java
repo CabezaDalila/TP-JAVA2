@@ -14,10 +14,14 @@ public class VerDatosCliente extends javax.swing.JFrame {
     private Cliente cliente;
 
     /**
-     * Constructor de la clase `VerDatosCliente`. Recibe un objeto de la clase `Cliente` como parámetro y lo asocia con la instancia actual.
-     * Inicializa la interfaz de usuario y muestra información básica sobre el cliente en la etiqueta de datos.
-     * @param cliente El cliente del cual se mostrarán los detalles de los stands.
-     */
+    * Constructor de la clase VerDatosCliente.
+    *
+    * Este constructor crea una instancia de la ventana "VerDatosCliente" para mostrar información
+    * relacionada con un cliente específico, como su descripción y ID. La ventana se configura
+    * para cerrarse cuando se presiona el botón de cierre.
+    *
+    * @param cliente El cliente del que se mostrarán los datos en la ventana.
+    */
     public VerDatosCliente(Cliente cliente) {
         this.cliente = cliente;
         initComponents();
