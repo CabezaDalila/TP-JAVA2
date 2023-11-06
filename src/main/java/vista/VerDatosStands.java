@@ -132,7 +132,6 @@ public class VerDatosStands extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
-        this.dispose();
     }//GEN-LAST:event_seleccionarClienteActionPerformed
 
 
