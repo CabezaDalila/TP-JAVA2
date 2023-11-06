@@ -122,18 +122,16 @@ public class VerDatosStands extends javax.swing.JFrame {
 
     private void seleccionarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionarClienteActionPerformed
         String textoIngresado = JOptionPane.showInputDialog("Ingrese el ID del cliente del que quiere consultar sus Stands:");
-        if (!textoIngresado.isEmpty()) {
+        if (textoIngresado != null) {
             try {
                 Cliente cliente = feria.buscaClientePorId(textoIngresado.toUpperCase());
                 VerDatosCliente datosCliente = new VerDatosCliente(cliente);
                 datosCliente.setVisible(true);
                 datosCliente.setLocationRelativeTo(null);
             } catch (ClienteNoEncontrado e) {
-                JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Debe ingresar un ID valido", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
-        else
-           JOptionPane.showMessageDialog(null, "Ingrese un ID", "Error", JOptionPane.WARNING_MESSAGE);
     }//GEN-LAST:event_seleccionarClienteActionPerformed
 
 
